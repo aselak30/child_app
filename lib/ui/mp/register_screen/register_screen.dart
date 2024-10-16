@@ -1,25 +1,25 @@
 
 import 'package:chilld_app/constants.dart';
-import 'package:chilld_app/ui/mp/forgot_password_screen/enter_email_screen.dart';
-import 'package:chilld_app/ui/mp/loading_screen/landing_screen.dart';
+import 'package:chilld_app/ui/mp/register_screen/create_password_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:chilld_app/widgets/custome_password_feild.dart';
+import 'package:chilld_app/widgets/custome_text_feild.dart';
 import 'package:chilld_app/widgets/cutstom_email_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoggingScreen extends StatefulWidget {
-  const LoggingScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoggingScreen> createState() => _LoggingScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoggingScreenState extends State<LoggingScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController countryController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController fullNameController = TextEditingController();
+  TextEditingController nicController = TextEditingController();
+  TextEditingController contactNumberController = TextEditingController();
   bool rememberMe = false;
 
   @override
@@ -43,12 +43,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LandingScreen(),
-                      ),
-                    );
+                    Navigator.pop(context);
                   },
                   child: Icon(
                     Icons.arrow_back,
@@ -57,7 +52,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'Log In',
+                  'Register',
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w600,
                     fontSize: 35,
@@ -65,7 +60,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                   ),
                 ),
                 Text(
-                  'Log in to continue your account.',
+                  'Create a new account.',
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w400,
                     fontSize: 18,
@@ -80,6 +75,63 @@ class _LoggingScreenState extends State<LoggingScreen> {
                       Row(
                         children: [
                           Text(
+                            'Full Name',
+                            style: GoogleFonts.poppins(
+                              color: kBlackColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      CustomTextField(
+                        controller: fullNameController,
+                        hintText: 'john stuwart',
+                        validate: true,
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        children: [
+                          Text(
+                            'NIC Number',
+                            style: GoogleFonts.poppins(
+                              color: kBlackColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      CustomTextField(
+                        controller: nicController,
+                        hintText: '999999999V',
+                        validate: true,
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        children: [
+                          Text(
+                            'Contact Number',
+                            style: GoogleFonts.poppins(
+                              color: kBlackColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      CustomTextField(
+                        controller: contactNumberController,
+                        hintText: '077 77 77 777',
+                        validate: true,
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          Text(
                             'Email Address',
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
@@ -90,69 +142,22 @@ class _LoggingScreenState extends State<LoggingScreen> {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      CustomEmailField(
-                        controller: emailController,
+                      CustomTextField(
+                        controller: contactNumberController,
                         hintText: 'example@gmail.com',
                         validate: true,
                       ),
-                      const SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Text(
-                            'Password',
-                            style: GoogleFonts.poppins(
-                              color: kBlackColor,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 10),
-                      CustomPasswordField(
-                        controller: passwordController,
-                        hintText: '**********',
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const EnterEmailScreen(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              'Forgot password?',
-                              style: GoogleFonts.openSans(
-                                color: kBlackColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height / 2.8,
-                      ),
+                      const SizedBox(height: 120),
                       CustomSubmitButton(
-                        title: 'LOGIN',
+                        title: 'NEXT',
                         color: kPrimaryBlueColor,
                         onTap: () {
-                          // if (_formKey.currentState!.validate()) {
-                          //   AuthenticationService().login(
-                          //     context,
-                          //     countryController.text+phoneController.text,
-                          //     passwordController.text,
-                          //     rememberMe,
-                          //   );
-                          // }
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CreatePasswordScreen(),
+                            ),
+                          );
                         },
                       ),
                     ],

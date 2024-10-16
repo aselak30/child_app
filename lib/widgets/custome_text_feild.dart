@@ -11,7 +11,7 @@ class CustomTextField extends StatefulWidget {
   final IconData? prefixIcon;
 
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.controller,
 
     this.hintText,
@@ -19,7 +19,7 @@ class CustomTextField extends StatefulWidget {
     this.readOnly,
     this.keyboardType,
     this.prefixIcon,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -40,37 +40,37 @@ class _CustomTextFieldState extends State<CustomTextField> {
         contentPadding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
         border: OutlineInputBorder(
           borderSide: BorderSide(
-            color: widget.readOnly == true ? kGrayColor : kGrayColor,
+            color: widget.readOnly == true ? kGrayColor.withOpacity(0.5) : kGrayColor.withOpacity(0.5),
           ),
           borderRadius: BorderRadius.circular(18.0),
         ),
         disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: widget.readOnly == true ? kGrayColor : kGrayColor,
+            color: widget.readOnly == true ? kGrayColor.withOpacity(0.5) : kGrayColor.withOpacity(0.5),
           ),
           borderRadius: BorderRadius.circular(18.0),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: widget.readOnly == true ? kGrayColor : kGrayColor,
+            color: widget.readOnly == true ? kGrayColor.withOpacity(0.5) : kGrayColor.withOpacity(0.5),
           ),
           borderRadius: BorderRadius.circular(18.0),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: widget.readOnly == true ? kGrayColor : kGrayColor,
+            color: widget.readOnly == true ? kGrayColor.withOpacity(0.5) : kGrayColor.withOpacity(0.5),
           ),
           borderRadius: BorderRadius.circular(18.0),
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: widget.readOnly == true ? kGrayColor : kGrayColor,
+            color: widget.readOnly == true ? kGrayColor.withOpacity(0.5) : kGrayColor.withOpacity(0.5),
           ),
           borderRadius: BorderRadius.circular(18.0),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: widget.readOnly == true ? kGrayColor : kGrayColor,
+            color: widget.readOnly == true ? kGrayColor.withOpacity(0.5) : kGrayColor.withOpacity(0.5),
           ),
           borderRadius: BorderRadius.circular(18.0),
         ),
@@ -82,11 +82,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
             : null,
         hintText: widget.hintText,
         hintStyle: TextStyle(
-          color: widget.readOnly == true ? kGrayColor : kGrayColor,
+          color: widget.readOnly == true ? kGrayColor.withOpacity(0.5) : kGrayColor.withOpacity(0.5),
         ),
       ),
       readOnly: widget.readOnly ?? false,
-      cursorColor: kGrayColor,
+      cursorColor: kGrayColor.withOpacity(0.5),
       controller: widget.controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType:  _getKeyboardType(),

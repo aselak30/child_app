@@ -6,14 +6,14 @@ import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LandingScreen extends StatefulWidget {
-  const LandingScreen({super.key});
+class PasswordChangeSuccessScreen extends StatefulWidget {
+  const PasswordChangeSuccessScreen({super.key});
 
   @override
-  State<LandingScreen> createState() => _LandingScreenState();
+  State<PasswordChangeSuccessScreen> createState() => _PasswordChangeSuccessScreenState();
 }
 
-class _LandingScreenState extends State<LandingScreen> {
+class _PasswordChangeSuccessScreenState extends State<PasswordChangeSuccessScreen> {
   @override
   void initState() {
     super.initState();
@@ -33,25 +33,16 @@ class _LandingScreenState extends State<LandingScreen> {
         child: Stack(
           children: [
             Positioned(
-              top: SizeConfig.screenHeight * 0.005,
+              bottom: SizeConfig.screenHeight * 0.42,
               left: 0,
               right: 0,
               child: Image.asset(
-                kKidsLogoImage,
+                kBoyImage,
                 //  fit: BoxFit.cover,
               ),
             ),
             Positioned(
-              bottom: SizeConfig.screenHeight * 0.4,
-              left: 0,
-              right: 0,
-              child: Image.asset(
-                kLoggingImage,
-                //  fit: BoxFit.cover,
-              ),
-            ),
-            Positioned(
-              bottom: SizeConfig.screenHeight * 0.30,
+              bottom: SizeConfig.screenHeight * 0.37,
               left: 0,
               right: 0,
               child: Column(
@@ -59,21 +50,42 @@ class _LandingScreenState extends State<LandingScreen> {
                 //mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'The best place for children to get',
+                    'Password Changed!',
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 25,
+                      color: kBlackColor,
+                      //height: 0.9,
+                      // letterSpacing: 5,
+                    ),
+                  ),
+                  const SizedBox(height: 20,),
+                  Text(
+                    'Successful! your password has',
                     style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                      color: kGrayColor,
+                      fontSize: 16,
+                      color: kGrayColor.withOpacity(0.4),
                       //height: 0.9,
                       // letterSpacing: 5,
                     ),
                   ),
                   Text(
-                    'advices & solutions.',
+                    'changed click button below to continue',
                     style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                      color: kGrayColor,
+                      fontSize: 16,
+                      color: kGrayColor.withOpacity(0.4),
+                      //height: 0.9,
+                      // letterSpacing: 5,
+                    ),
+                  ),
+                  Text(
+                    'your account',
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      color: kGrayColor.withOpacity(0.4),
                       //height: 0.9,
                       // letterSpacing: 5,
                     ),
@@ -82,7 +94,7 @@ class _LandingScreenState extends State<LandingScreen> {
               ),
             ),
             Positioned(
-              bottom: 70,
+              bottom: 0,
               left: 0,
               right: 0,
               child: CustomSubmitButton(
@@ -98,31 +110,7 @@ class _LandingScreenState extends State<LandingScreen> {
                 },
               ),
             ),
-            Positioned(
-              bottom: 2,
-              left: 0,
-              right: 0,
-              child:    TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const RegisterScreen(),
-                    ),
-                  );
-                },
-                child: Text(
-                  'REGISTER',
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
-                    color: kBlackColor,
-                    //height: 0.9,
-                    // letterSpacing: 5,
-                  ),
-                ),
-              ),
-            ),
+
           ],
         ),
       ),
