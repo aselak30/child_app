@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/dialogs/custome_loading_dialog.dart';
 import 'package:chilld_app/services/secure_storage_service.dart';
-import 'package:chilld_app/ui/mp/home_page/home_page.dart';
+import 'package:chilld_app/ui/mp/home_page/home_screen.dart';
 import 'package:chilld_app/ui/mp/loading_screen/landing_screen.dart';
 import 'package:chilld_app/ui/mp/loging_screen/logging_screen.dart';
 import 'package:chilld_app/ui/mp/register_screen/register_success_screen.dart';
@@ -52,7 +52,7 @@ class AuthenticationService extends ChangeNotifier {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => HomeScreen(),
         ),
         (route) => false,
       );
