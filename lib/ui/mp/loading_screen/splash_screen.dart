@@ -16,8 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Provider.of<AuthenticationService>(context, listen: false)
-        .checkLogin(context);
+    Provider.of<AuthenticationService>(context, listen: false).checkLogin(context);
   }
 
   @override

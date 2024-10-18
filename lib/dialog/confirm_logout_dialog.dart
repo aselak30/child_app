@@ -55,14 +55,6 @@ class ConfirmLogoutDialog extends StatelessWidget {
                 title: 'Yes',
                 color: kPrimaryBlueColor,
                 onTap: () {
-                  // SecureStorageManager().deleteAll();
-                  // Navigator.pushAndRemoveUntil(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const LoginScreen(),
-                  //   ),
-                  //   (route) => false,
-                  // );
                 },
               ),
               const SizedBox(height: 10),
