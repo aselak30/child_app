@@ -5,12 +5,14 @@ class CustomEmailField extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
   final bool? validate;
+  final bool? isIcon;
 
   const CustomEmailField({
     Key? key,
     required this.controller,
     required this.hintText,
     this.validate,
+    this.isIcon = false,
   }) : super(key: key);
 
   @override
@@ -28,7 +30,7 @@ class _CustomEmailFieldState extends State<CustomEmailField> {
 
   bool validateEmail(String email) {
     return RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(email);
   }
 
@@ -36,7 +38,8 @@ class _CustomEmailFieldState extends State<CustomEmailField> {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 18),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 10.0, vertical: 18),
         border: OutlineInputBorder(
           borderSide: BorderSide(
             color: kGrayColor,
@@ -46,9 +49,9 @@ class _CustomEmailFieldState extends State<CustomEmailField> {
         // Define icon based on the validity of the email
         suffixIcon: _isValidEmail
             ? Icon(
-          Icons.done,
-          color: kPrimaryBlueColor,
-        )
+                Icons.done,
+                color: kPrimaryBlueColor,
+              )
             : null,
         disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -80,10 +83,12 @@ class _CustomEmailFieldState extends State<CustomEmailField> {
           ),
           borderRadius: BorderRadius.circular(18.0),
         ),
-        prefixIcon: Icon(
-          Icons.person_2_outlined,
-          color: kGrayColor.withOpacity(0.5),
-        ),
+        prefixIcon: widget.isIcon!
+            ? Icon(
+                Icons.person_2_outlined,
+                color: kGrayColor.withOpacity(0.5),
+              )
+            : null,
         hintText: widget.hintText,
         hintStyle: TextStyle(
           color: kGrayColor.withOpacity(0.5),
@@ -97,7 +102,9 @@ class _CustomEmailFieldState extends State<CustomEmailField> {
       validator: (value) {
         if (value!.isNotEmpty && !validateEmail(value)) {
           return 'Please enter a valid email';
-        } else if (widget.validate != null && widget.validate == true && value.isEmpty) {
+        } else if (widget.validate != null &&
+            widget.validate == true &&
+            value.isEmpty) {
           return 'Please fill this field to continue';
         } else {
           return null;
@@ -106,4 +113,3 @@ class _CustomEmailFieldState extends State<CustomEmailField> {
     );
   }
 }
-

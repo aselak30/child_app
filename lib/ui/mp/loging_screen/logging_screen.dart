@@ -1,9 +1,10 @@
-
 import 'package:chilld_app/constants.dart';
+import 'package:chilld_app/services/auth_service.dart';
 import 'package:chilld_app/ui/mp/forgot_password_screen/enter_email_screen.dart';
 import 'package:chilld_app/ui/mp/loading_screen/landing_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:chilld_app/widgets/custome_password_feild.dart';
+import 'package:chilld_app/widgets/custome_text_feild.dart';
 import 'package:chilld_app/widgets/cutstom_email_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,8 +18,8 @@ class LoggingScreen extends StatefulWidget {
 
 class _LoggingScreenState extends State<LoggingScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController countryController = TextEditingController();
+  TextEditingController usernamecontroller = TextEditingController();
+  // TextEditingController countryController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool rememberMe = false;
 
@@ -80,7 +81,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                       Row(
                         children: [
                           Text(
-                            'Email Address',
+                            'User Name',
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -90,10 +91,10 @@ class _LoggingScreenState extends State<LoggingScreen> {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      CustomEmailField(
-                        controller: emailController,
-                        hintText: 'example@gmail.com',
-                        validate: true,
+                      CustomTextField(
+                        controller: usernamecontroller,
+                        hintText: 'john123',
+                        // validate: true,
                       ),
                       const SizedBox(height: 20),
                       Row(
@@ -115,7 +116,6 @@ class _LoggingScreenState extends State<LoggingScreen> {
                       ),
                       const SizedBox(height: 15),
                       Row(
-
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           GestureDetector(
@@ -123,7 +123,8 @@ class _LoggingScreenState extends State<LoggingScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const EnterEmailScreen(),
+                                  builder: (context) =>
+                                      const EnterEmailScreen(),
                                 ),
                               );
                             },
@@ -145,6 +146,13 @@ class _LoggingScreenState extends State<LoggingScreen> {
                         title: 'LOGIN',
                         color: kPrimaryBlueColor,
                         onTap: () {
+                          // if (_formKey.currentState!.validate()) {
+                          AuthenticationService().login(
+                            context,
+                            usernamecontroller.text,
+                            passwordController.text,
+                          );
+                          // }
                           // if (_formKey.currentState!.validate()) {
                           //   AuthenticationService().login(
                           //     context,

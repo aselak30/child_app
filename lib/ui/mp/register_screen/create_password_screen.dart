@@ -1,14 +1,27 @@
 import 'package:chilld_app/constants.dart';
+import 'package:chilld_app/services/auth_service.dart';
 import 'package:chilld_app/ui/mp/register_screen/register_success_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:chilld_app/widgets/custome_password_feild.dart';
+import 'package:chilld_app/widgets/snak_bars.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:provider/provider.dart';
 
 class CreatePasswordScreen extends StatefulWidget {
-  const CreatePasswordScreen({super.key});
+  final String firstName;
+  final String lastName;
+  final String userName;
+  final String email;
+
+  const CreatePasswordScreen({
+    super.key,
+    required this.firstName,
+    required this.lastName,
+    required this.userName,
+    required this.email,
+  });
 
   @override
   State<CreatePasswordScreen> createState() => _CreatePasswordScreenState();
@@ -20,7 +33,8 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
   TextEditingController confirmPasswordController = TextEditingController();
 
   bool validatePassword(String password) {
-    RegExp regExp = RegExp(r'^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$');
+    RegExp regExp =
+        RegExp(r'^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$');
     return regExp.hasMatch(password) && !password.contains(' ');
   }
 
@@ -171,13 +185,38 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                           title: 'SUBMIT',
                           color: kPrimaryBlueColor,
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const RegisterSuccessScreen(),
-                              ),
-                            );
-
+                            if (!validatePassword(passwordController.text)) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                errorSnackBar(
+                                    'The password you have entered does not meet the minimum security requirements'),
+                              );
+                            } else {
+                              if (_formKey.currentState!.validate()) {
+                                if (passwordController.text !=
+                                    confirmPasswordController.text) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    errorSnackBar('Password do not match'),
+                                  );
+                                } else {
+                                  Provider.of<AuthenticationService>(context,
+                                          listen: false)
+                                      .register(
+                                          context,
+                                          widget.userName,
+                                          widget.email,
+                                          passwordController.text,
+                                          widget.firstName,
+                                          widget.lastName);
+                                }
+                              }
+                            }
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) =>
+                            //         const RegisterSuccessScreen(),
+                            //   ),
+                            // );
                           },
                         ),
                       ],

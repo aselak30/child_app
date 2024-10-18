@@ -1,7 +1,9 @@
 import 'package:chilld_app/constants.dart';
+import 'package:chilld_app/services/auth_service.dart';
 import 'package:chilld_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,7 +16,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Provider.of<AuthenticationService>(context, listen: false).checkLogin(context);
+    Provider.of<AuthenticationService>(context, listen: false)
+        .checkLogin(context);
   }
 
   @override
@@ -30,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
             right: 0,
             child: Image.asset(
               kSplashImage,
-            //  fit: BoxFit.cover,
+              //  fit: BoxFit.cover,
             ),
           ),
           Positioned(

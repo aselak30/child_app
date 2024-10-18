@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+var authToken = '';
+var baseUrl = 'https://uni.squartal.com/wp-json/custom/v1/';
+var apiKey = 'ff060aa91d525ff681745819edbdac32abc362006d11cde5fcd64cae2119126e';
 
 var kPrimaryBlueColor = const Color(0XFF0E4D94);
 var kBlackColor = const Color(0XFF000000);
@@ -16,8 +19,5 @@ var kLoggingImage = 'assets/loging_image.png';
 var kSplashImage = 'assets/splash_image.png';
 var kPlaceHolderImage = 'assets/place_holder.png';
 
-
 var kHorizontalPadding = 25.0;
 var kVerticalPadding = 25.0;
-
-

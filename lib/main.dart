@@ -1,9 +1,13 @@
+import 'package:chilld_app/services/auth_service.dart';
 import 'package:chilld_app/ui/mp/loading_screen/landing_screen.dart';
 import 'package:chilld_app/ui/mp/loading_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => AuthenticationService()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -22,4 +26,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

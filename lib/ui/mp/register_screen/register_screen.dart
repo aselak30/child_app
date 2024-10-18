@@ -1,4 +1,3 @@
-
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/ui/mp/register_screen/create_password_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
@@ -17,9 +16,14 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController fullNameController = TextEditingController();
-  TextEditingController nicController = TextEditingController();
-  TextEditingController contactNumberController = TextEditingController();
+  // TextEditingController fullNameController = TextEditingController();
+  // TextEditingController nicController = TextEditingController();
+  // TextEditingController contactNumberController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
+
+  TextEditingController emailController = TextEditingController();
   bool rememberMe = false;
 
   @override
@@ -75,7 +79,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Row(
                         children: [
                           Text(
-                            'Full Name',
+                            'First Name',
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -86,15 +90,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 10),
                       CustomTextField(
-                        controller: fullNameController,
-                        hintText: 'john stuwart',
+                        controller: firstNameController,
+                        hintText: 'john',
                         validate: true,
                       ),
                       const SizedBox(height: 20),
                       Row(
                         children: [
                           Text(
-                            'NIC Number',
+                            'last Name',
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -105,15 +109,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 10),
                       CustomTextField(
-                        controller: nicController,
-                        hintText: '999999999V',
+                        controller: lastNameController,
+                        hintText: 'stuwart',
                         validate: true,
                       ),
                       const SizedBox(height: 20),
                       Row(
                         children: [
                           Text(
-                            'Contact Number',
+                            'User Name',
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -124,11 +128,49 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 10),
                       CustomTextField(
-                        controller: contactNumberController,
-                        hintText: '077 77 77 777',
+                        controller: userNameController,
+                        hintText: 'jhon',
                         validate: true,
                       ),
-                      const SizedBox(height: 15),
+                      const SizedBox(height: 20),
+                      // Row(
+                      //   children: [
+                      //     Text(
+                      //       'NIC Number',
+                      //       style: GoogleFonts.poppins(
+                      //         color: kBlackColor,
+                      //         fontSize: 16,
+                      //         fontWeight: FontWeight.w500,
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      // const SizedBox(height: 10),
+                      // CustomTextField(
+                      //   controller: nicController,
+                      //   hintText: '999999999V',
+                      //   validate: true,
+                      // ),
+                      // const SizedBox(height: 20),
+                      // Row(
+                      //   children: [
+                      //     Text(
+                      //       'Contact Number',
+                      //       style: GoogleFonts.poppins(
+                      //         color: kBlackColor,
+                      //         fontSize: 16,
+                      //         fontWeight: FontWeight.w500,
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      // const SizedBox(height: 10),
+                      // CustomTextField(
+                      //   controller: contactNumberController,
+                      //   hintText: '077 77 77 777',
+                      //   validate: true,
+                      // ),
+                      // const SizedBox(height: 15),
                       Row(
                         children: [
                           Text(
@@ -142,8 +184,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      CustomTextField(
-                        controller: contactNumberController,
+                      CustomEmailField(
+                        controller: emailController,
                         hintText: 'example@gmail.com',
                         validate: true,
                       ),
@@ -152,12 +194,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         title: 'NEXT',
                         color: kPrimaryBlueColor,
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const CreatePasswordScreen(),
-                            ),
-                          );
+                          if (_formKey.currentState!.validate()) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CreatePasswordScreen(
+                                  firstName: firstNameController.text,
+                                  lastName: lastNameController.text,
+                                  userName: userNameController.text,
+                                  email: emailController.text,
+                                ),
+                              ),
+                            );
+                          }
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => const CreatePasswordScreen(),
+                          //   ),
+                          // );
                         },
                       ),
                     ],
