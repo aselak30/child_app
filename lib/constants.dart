@@ -15,6 +15,18 @@ var kBoyImage = 'assets/boy.png';
 var kLoggingImage = 'assets/loging_image.png';
 var kSplashImage = 'assets/splash_image.png';
 var kPlaceHolderImage = 'assets/place_holder.png';
+var kPostImage = 'assets/post_image_holder.png';
+
+
+var kHomeIcon = 'assets/home_icon.png';
+var kChatIcon = 'assets/chat_icon.png';
+var kProfileIcon = 'assets/profile_icon.png';
+var kUserIcon = 'assets/user_icon.png';
+var kChatIcon1 = 'assets/chat_icon_1.png';
+var kLanguageIcon = 'assets/language_icon.png';
+var kContactSupportIcon = 'assets/contact_support_icon.png';
+var kLogOutIcon = 'assets/logout_icon.png';
+var kSettingIcon = 'assets/setting_icon.png';
 
 
 var kHorizontalPadding = 25.0;

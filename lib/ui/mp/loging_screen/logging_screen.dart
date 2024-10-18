@@ -1,5 +1,6 @@
 
 import 'package:chilld_app/constants.dart';
+import 'package:chilld_app/ui/mp/bottom_naviagation_bar/dash_board_screen.dart';
 import 'package:chilld_app/ui/mp/forgot_password_screen/enter_email_screen.dart';
 import 'package:chilld_app/ui/mp/loading_screen/landing_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
@@ -129,7 +130,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                             },
                             child: Text(
                               'Forgot password?',
-                              style: GoogleFonts.openSans(
+                              style: GoogleFonts.poppins(
                                 color: kBlackColor,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -153,6 +154,12 @@ class _LoggingScreenState extends State<LoggingScreen> {
                           //     rememberMe,
                           //   );
                           // }
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const DashBoardScreen(),
+                            ),
+                          );
                         },
                       ),
                     ],
