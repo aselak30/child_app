@@ -17,7 +17,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    const ChatScreen(),
+    ChatScreen(),
     const ProfileScreen(),
   ];
 
@@ -50,12 +50,16 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     Image.asset(
                       kHomeIcon,
                       width: 20,
-                      color: _currentIndex == 0 ? kPrimaryBlueColor : kPrimaryBlueColor.withOpacity(0.5),
+                      color: _currentIndex == 0
+                          ? kPrimaryBlueColor
+                          : kPrimaryBlueColor.withOpacity(0.5),
                     ),
                     Text(
                       'Home',
                       style: GoogleFonts.poppins(
-                        color: _currentIndex == 0 ? kBlackColor : kGrayColor.withOpacity(0.5),
+                        color: _currentIndex == 0
+                            ? kBlackColor
+                            : kGrayColor.withOpacity(0.5),
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                       ),
@@ -75,12 +79,16 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     Image.asset(
                       kChatIcon,
                       width: 20,
-                      color: _currentIndex == 1 ? kPrimaryBlueColor : kPrimaryBlueColor.withOpacity(0.5),
+                      color: _currentIndex == 1
+                          ? kPrimaryBlueColor
+                          : kPrimaryBlueColor.withOpacity(0.5),
                     ),
                     Text(
                       'Chat',
                       style: GoogleFonts.poppins(
-                        color: _currentIndex == 1 ? kBlackColor : kGrayColor.withOpacity(0.5),
+                        color: _currentIndex == 1
+                            ? kBlackColor
+                            : kGrayColor.withOpacity(0.5),
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                       ),
@@ -100,12 +108,16 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     Image.asset(
                       kProfileIcon,
                       width: 20,
-                      color: _currentIndex == 2 ? kPrimaryBlueColor : kPrimaryBlueColor.withOpacity(0.5),
+                      color: _currentIndex == 2
+                          ? kPrimaryBlueColor
+                          : kPrimaryBlueColor.withOpacity(0.5),
                     ),
                     Text(
                       'Profile',
                       style: GoogleFonts.poppins(
-                        color: _currentIndex == 2 ? kBlackColor : kGrayColor.withOpacity(0.5),
+                        color: _currentIndex == 2
+                            ? kBlackColor
+                            : kGrayColor.withOpacity(0.5),
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                       ),
