@@ -8,12 +8,12 @@ class CustomEmailField extends StatefulWidget {
   final bool? isIcon;
 
   const CustomEmailField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.hintText,
     this.validate,
     this.isIcon = false,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomEmailField> createState() => _CustomEmailFieldState();

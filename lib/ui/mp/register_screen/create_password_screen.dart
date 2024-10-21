@@ -1,6 +1,5 @@
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/services/auth_service.dart';
-import 'package:chilld_app/ui/mp/register_screen/register_success_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:chilld_app/widgets/custome_password_feild.dart';
 import 'package:chilld_app/widgets/snak_bars.dart';

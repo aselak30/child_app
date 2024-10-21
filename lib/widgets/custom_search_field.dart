@@ -1,7 +1,7 @@
-
 import 'package:chilld_app/constants.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CustomSearchField extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;

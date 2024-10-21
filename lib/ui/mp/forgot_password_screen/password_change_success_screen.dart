@@ -1,7 +1,6 @@
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/size_config.dart';
 import 'package:chilld_app/ui/mp/loging_screen/logging_screen.dart';
-import 'package:chilld_app/ui/mp/register_screen/register_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,10 +9,12 @@ class PasswordChangeSuccessScreen extends StatefulWidget {
   const PasswordChangeSuccessScreen({super.key});
 
   @override
-  State<PasswordChangeSuccessScreen> createState() => _PasswordChangeSuccessScreenState();
+  State<PasswordChangeSuccessScreen> createState() =>
+      _PasswordChangeSuccessScreenState();
 }
 
-class _PasswordChangeSuccessScreenState extends State<PasswordChangeSuccessScreen> {
+class _PasswordChangeSuccessScreenState
+    extends State<PasswordChangeSuccessScreen> {
   @override
   void initState() {
     super.initState();
@@ -59,7 +60,9 @@ class _PasswordChangeSuccessScreenState extends State<PasswordChangeSuccessScree
                       // letterSpacing: 5,
                     ),
                   ),
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Text(
                     'Successful! your password has',
                     style: GoogleFonts.poppins(
@@ -110,7 +113,6 @@ class _PasswordChangeSuccessScreenState extends State<PasswordChangeSuccessScree
                 },
               ),
             ),
-
           ],
         ),
       ),

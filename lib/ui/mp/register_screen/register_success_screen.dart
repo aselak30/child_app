@@ -1,7 +1,6 @@
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/size_config.dart';
 import 'package:chilld_app/ui/mp/loging_screen/logging_screen.dart';
-import 'package:chilld_app/ui/mp/register_screen/register_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -59,7 +58,9 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen> {
                       // letterSpacing: 5,
                     ),
                   ),
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Text(
                     'You have successfully registered to the',
                     style: GoogleFonts.poppins(
@@ -110,7 +111,6 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen> {
                 },
               ),
             ),
-
           ],
         ),
       ),

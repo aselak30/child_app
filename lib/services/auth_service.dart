@@ -1,13 +1,12 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/dialogs/custome_loading_dialog.dart';
 import 'package:chilld_app/services/secure_storage_service.dart';
 import 'package:chilld_app/ui/mp/bottom_naviagation_bar/dash_board_screen.dart';
-import 'package:chilld_app/ui/mp/home_page/home_screen.dart';
 import 'package:chilld_app/ui/mp/loading_screen/landing_screen.dart';
-import 'package:chilld_app/ui/mp/loging_screen/logging_screen.dart';
 import 'package:chilld_app/ui/mp/register_screen/register_success_screen.dart';
 import 'package:chilld_app/widgets/snak_bars.dart';
 import 'package:flutter/material.dart';
@@ -22,14 +21,11 @@ class AuthenticationService extends ChangeNotifier {
   String role = '';
 
   void checkLogin(BuildContext context) {
-    print("checkLogin");
     Future.delayed(
       const Duration(seconds: 3),
       () async {
         String? token = await SecureStorageManager().getToken();
-        print(token);
         if (token != null) {
-          print(consumerId);
           applicationInit(context);
         } else {
           Navigator.pushAndRemoveUntil(
@@ -42,7 +38,6 @@ class AuthenticationService extends ChangeNotifier {
         }
       },
     );
-    ;
   }
 
   Future<void> applicationInit(BuildContext context) async {
@@ -53,12 +48,11 @@ class AuthenticationService extends ChangeNotifier {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (context) => DashBoardScreen(),
+          builder: (context) => const DashBoardScreen(),
         ),
         (route) => false,
       );
     } catch (error) {
-      print(error);
       ScaffoldMessenger.of(context).showSnackBar(
         errorSnackBar(
           error.toString(),
@@ -87,7 +81,7 @@ class AuthenticationService extends ChangeNotifier {
       );
 
       final response = await http.post(
-        Uri.parse('${baseUrl}login'),
+        Uri.parse('${baseUrl}custom/v1/login'),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -98,7 +92,6 @@ class AuthenticationService extends ChangeNotifier {
       Navigator.pop(context);
       if (response.statusCode == 200) {
         final responseData = json.decode(response.body);
-        print(responseData);
         SecureStorageManager().storeToken(
           responseData['token'].toString(),
         );
@@ -111,7 +104,6 @@ class AuthenticationService extends ChangeNotifier {
         );
       }
     } catch (e) {
-      print(e);
       ScaffoldMessenger.of(context).showSnackBar(
         errorSnackBar(e.toString()),
       );
@@ -145,15 +137,13 @@ class AuthenticationService extends ChangeNotifier {
         ),
       );
       final response = await http.post(
-        Uri.parse('${baseUrl}register'),
+        Uri.parse('${baseUrl}custom/v1/register'),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
         body: jsonEncode(data),
       );
-      print(response.statusCode);
-      print(response.body);
 
       Navigator.pop(context);
 
@@ -169,7 +159,6 @@ class AuthenticationService extends ChangeNotifier {
       } else {
         final responseBody = jsonDecode(response.body);
         final message = responseBody['message'];
-        print("Error message: $message");
 
         ScaffoldMessenger.of(context).showSnackBar(
           errorSnackBar('Could not complete registration, $message.'),

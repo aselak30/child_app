@@ -2,16 +2,15 @@ import 'package:chilld_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
   final bool showLeadingIcon; // Add this property
 
   const CustomAppBar({
-    Key? key,
+    super.key,
     required this.title,
     this.showLeadingIcon = true, // Set default value to true
-  }) : super(key: key);
+  });
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
@@ -21,7 +20,6 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -39,15 +37,17 @@ class _CustomAppBarState extends State<CustomAppBar> {
         ),
       ),
       centerTitle: true,
-      leading: widget.showLeadingIcon ? GestureDetector(
-        onTap: () {
-          Navigator.pop(context);
-        },
-        child: Icon(
-          Icons.arrow_back,
-          color: kBlackColor,
-        ),
-      ) : null, // Set leading to null if showLeadingIcon is false
+      leading: widget.showLeadingIcon
+          ? GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(
+                Icons.arrow_back,
+                color: kBlackColor,
+              ),
+            )
+          : null, // Set leading to null if showLeadingIcon is false
     );
   }
 }
