@@ -1,7 +1,6 @@
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/ui/mp/register_screen/create_password_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
-import 'package:chilld_app/widgets/custome_password_feild.dart';
 import 'package:chilld_app/widgets/custome_text_feild.dart';
 import 'package:chilld_app/widgets/cutstom_email_feild.dart';
 import 'package:flutter/material.dart';

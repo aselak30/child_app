@@ -1,15 +1,37 @@
 import 'package:chilld_app/constants.dart';
+import 'package:chilld_app/models/post_details_model.dart';
+import 'package:chilld_app/services/posts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class FullPostScreen extends StatefulWidget {
-  const FullPostScreen({super.key});
+  final String postId;
+  const FullPostScreen({super.key, required this.postId});
 
   @override
   State<FullPostScreen> createState() => _FullPostScreenState();
 }
 
 class _FullPostScreenState extends State<FullPostScreen> {
+  late Future<PostDetailsModel> postDetailsFuture;
+  String? selectedLanguage = "english";
+
+  List<String> items = ['english', 'sinhala'];
+
+  @override
+  void initState() {
+    super.initState();
+    postDetailsFuture = getPostDetails(widget.postId, selectedLanguage!);
+  }
+
+  Future<PostDetailsModel> getPostDetails(
+      String postId, String language) async {
+    final postDetails =
+        await PostsService.getPostDetails(context, language, postId);
+    return postDetails;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,78 +54,118 @@ class _FullPostScreenState extends State<FullPostScreen> {
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                Text(
-                  'English',
-                  style: GoogleFonts.openSans(
-                    color: kBlackColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(
-                    Icons.arrow_drop_down_rounded,
-                    color: kBlackColor,
-                  ),
-                  onPressed: () {
-                    //Navigator.of(context).pop();
-                  },
-                ),
-              ],
+            child: DropdownButton<String>(
+              value: selectedLanguage, // Default value set to 'English'
+              icon: Icon(
+                Icons.arrow_drop_down_rounded,
+                color: kBlackColor,
+              ),
+              iconSize: 24,
+              elevation: 16,
+              style: GoogleFonts.openSans(
+                color: kBlackColor,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
+              // TextStyle(
+              //     color: Colors.black,
+              //     fontSize: 18),
+              // underline: Container(
+              //   height: 2,
+              //   color: Colors.deepPurpleAccent,
+              // ),
+              onChanged: (String? newValue) {
+                setState(() {
+                  selectedLanguage = newValue!;
+                  postDetailsFuture =
+                      getPostDetails(widget.postId, selectedLanguage!);
+
+                  // getPostDetails(widget.postId, selectedLanguage!);
+                });
+              },
+              items: items.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
             ),
           ),
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: kHorizontalPadding,
-          vertical: kVerticalPadding,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Kindness Counts",
-                style: GoogleFonts.poppins(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  color: kBlackColor,
-                ),
+      body: FutureBuilder<PostDetailsModel>(
+        future: postDetailsFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: LoadingAnimationWidget.staggeredDotsWave(
+                size: 50,
+                color: Colors.black,
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
                 child: Image.asset(
-                  kPostImage,
-                  height: 150,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
+              noData,
+              height: 150,
+              // width: double.infinity,
+              fit: BoxFit.cover,
+            ));
+          } else if (snapshot.hasData) {
+            final postDetails = snapshot.data!;
+            return Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: kHorizontalPadding,
+                vertical: kVerticalPadding,
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
+              child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Lorem ipsum dolor sit amet consectetur. Arcu sed sapien magna hac amet. Ultricies neque congue felis phasellus velit felis dui. Mollis turpis euismod risus nunc est scelerisque.'
-                      'Nunc pharetra convallis duis adipiscing ultricies nec vel pretium. Adipiscing blandit sed aenean suscipit convallis velit donec hendrerit facilisi. Praesent in commodo id tortor. Duis malesuada pellentesque odio mattis ut morbi tortor pellentesque. Molestie auctor elit vitae congue. Est nunc sem nulla morbi convallis.'
-                      ' Sem magna erat varius vel. Integer vulputate donec euismod in. Pellentesque commodo dolor duis ornare odio id. Enim tortor mi diam magna neque duis morbi erat. Nisi purus urna aliquam sed. Quisque aenean facilisi tristique felis sit eget ac dignissim.'
-                      'Nisi morbi vulputate ipsum magna facilisis pellentesque tristique nam at. Faucibus malesuada amet mi aliquet diam nisl morbi. Fames eu suspendisse nisl faucibus.'
-                      'Nisi morbi vulputate ipsum magna facilisis pellentesque tristique nam at. Faucibus malesuada amet mi aliquet diam nisl morbi. Fames eu suspendisse nisl faucibus.',
+                      postDetails.translatedTitle,
+                      style: GoogleFonts.poppins(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                        color: kBlackColor,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: postDetails.featuredImage == false
+                          ? Image.asset(
+                              kPostImage,
+                              height: 150,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.network(
+                              postDetails.featuredImage,
+                              height: 150,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      postDetails.translatedContent,
                       style: GoogleFonts.poppins(fontSize: 16),
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
+            );
+          } else {
+            return Center(
+                child: Image.asset(
+              noData,
+              height: 150,
+              // width: double.infinity,
+              fit: BoxFit.cover,
+            ));
+          }
+        },
       ),
     );
   }

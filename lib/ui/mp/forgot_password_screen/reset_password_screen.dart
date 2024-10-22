@@ -1,12 +1,10 @@
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/ui/mp/forgot_password_screen/password_change_success_screen.dart';
-import 'package:chilld_app/ui/mp/register_screen/register_success_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:chilld_app/widgets/custome_password_feild.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});
@@ -21,7 +19,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   TextEditingController confirmPasswordController = TextEditingController();
 
   bool validatePassword(String password) {
-    RegExp regExp = RegExp(r'^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$');
+    RegExp regExp =
+        RegExp(r'^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$');
     return regExp.hasMatch(password) && !password.contains(' ');
   }
 
@@ -121,7 +120,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              const SizedBox(height: 5,),
+                              const SizedBox(
+                                height: 5,
+                              ),
                               Text(
                                 '\u2022   01 uppercase letter',
                                 style: GoogleFonts.poppins(
@@ -130,7 +131,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              const SizedBox(height: 5,),
+                              const SizedBox(
+                                height: 5,
+                              ),
                               Text(
                                 '\u2022   01 special character',
                                 style: GoogleFonts.poppins(
@@ -139,7 +142,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              const SizedBox(height: 5,),
+                              const SizedBox(
+                                height: 5,
+                              ),
                               Text(
                                 '\u2022   01 number',
                                 style: GoogleFonts.poppins(
@@ -148,7 +153,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              const SizedBox(height: 5,),
+                              const SizedBox(
+                                height: 5,
+                              ),
                               Text(
                                 '\u2022   no spaces',
                                 style: GoogleFonts.poppins(
@@ -170,10 +177,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const PasswordChangeSuccessScreen(),
+                                builder: (context) =>
+                                    const PasswordChangeSuccessScreen(),
                               ),
                             );
-
                           },
                         ),
                       ],

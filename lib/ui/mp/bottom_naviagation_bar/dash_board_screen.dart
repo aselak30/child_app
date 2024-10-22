@@ -17,7 +17,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    ChatScreen(),
+    const ChatScreen(),
     const ProfileScreen(),
   ];
 

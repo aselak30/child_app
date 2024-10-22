@@ -1,8 +1,5 @@
 import 'package:chilld_app/constants.dart';
-import 'package:chilld_app/size_config.dart';
 import 'package:chilld_app/ui/mp/forgot_password_screen/submit_otp_screen.dart';
-import 'package:chilld_app/ui/mp/loging_screen/logging_screen.dart';
-import 'package:chilld_app/ui/mp/register_screen/register_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:chilld_app/widgets/cutstom_email_feild.dart';
 import 'package:flutter/material.dart';
@@ -90,7 +87,6 @@ class _EnterEmailScreenState extends State<EnterEmailScreen> {
                         hintText: 'example@gmail.com',
                         validate: true,
                       ),
-
                       SizedBox(
                         height: MediaQuery.of(context).size.height / 1.9,
                       ),

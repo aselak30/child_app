@@ -19,7 +19,7 @@ class CustomLoadingDialog extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               width: 80,
               child: LoadingIndicator(
                 indicatorType: Indicator.ballSpinFadeLoader,
