@@ -1,8 +1,12 @@
+import 'package:chilld_app/classes/language.dart';
+import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/dialog/confirm_logout_dialog.dart';
+import 'package:chilld_app/main.dart';
 import 'package:chilld_app/widgets/profile_menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -105,21 +109,67 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const RegisterCenterScreen(),
-                    //   ),
-                    // );
-                  },
-                  child: ProfileMenuItem(
-                    iconPath: kLanguageIcon,
-                    menuTitle: 'Language',
+            GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  backgroundColor: kWhiteColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                   ),
-                ),
-                const SizedBox(height: 20),
+                  builder: (BuildContext context) {
+                    return Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Choose Language',
+                            style: TextStyle(
+                              color: kBlackColor,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          ListView(
+                            shrinkWrap: true,
+                            children: Language.languageList()
+                                .map(
+                                  (language) => ListTile(
+                                title: Center(
+                                  child: Text(
+                                    language.name,
+                                    style: TextStyle(
+                                      color: kBlackColor,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                                onTap: () async {
+                                  Locale _locale = await setLocale(language.languagecode);
+                                  MyApp.setLocale(context, _locale);
+                                  Navigator.of(context).pop(); // Close the bottom sheet after selection
+                                },
+                              ),
+                            )
+                                .toList(),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+
+              },
+              child: ProfileMenuItem(
+                iconPath: kLanguageIcon,
+                menuTitle: 'Language',
+              ),
+            ),
+
+            const SizedBox(height: 20),
                 // GestureDetector(
                 //   onTap: () {
                 //     Navigator.push(
