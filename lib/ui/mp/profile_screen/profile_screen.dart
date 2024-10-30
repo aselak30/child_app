@@ -90,7 +90,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: ProfileMenuItem(
                     iconPath: kUserIcon,
-                    menuTitle: 'Edit Profile',
+                    menuTitle: translation(context).edit_profile,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -105,7 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: ProfileMenuItem(
                     iconPath: kChatIcon1,
-                    menuTitle: 'Chat Now',
+                    menuTitle: translation(context).chat_now,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -124,7 +124,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Choose Language',
+                            translation(context).language,
                             style: TextStyle(
                               color: kBlackColor,
                               fontSize: 18,
@@ -165,7 +165,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
               child: ProfileMenuItem(
                 iconPath: kLanguageIcon,
-                menuTitle: 'Language',
+                menuTitle: translation(context).language,
               ),
             ),
 
@@ -187,7 +187,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 // const SizedBox(height: 10),
                 ProfileMenuItem(
                   iconPath: kSettingIcon,
-                  menuTitle: 'Settings',
+                  menuTitle: translation(context).settings,
                 ),
                 const SizedBox(height: 20),
                 GestureDetector(
@@ -201,7 +201,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: ProfileMenuItem(
                     iconPath: kContactSupportIcon,
-                    menuTitle: 'Help & Support',
+                    menuTitle: translation(context).help_support,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -214,7 +214,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   child: ProfileMenuItem(
                     iconPath: kLogOutIcon,
-                    menuTitle: 'Logout',
+                    menuTitle: translation(context).log_out,
                   ),
                 ),
               ],

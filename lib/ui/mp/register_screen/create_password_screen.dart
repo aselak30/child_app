@@ -1,3 +1,4 @@
+import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/services/auth_service.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
@@ -67,7 +68,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Create Password',
+                        translation(context).create_password,
                           style: GoogleFonts.poppins(
                             color: kBlackColor,
                             fontSize: 30,
@@ -76,7 +77,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                         ),
                         const SizedBox(height: 15),
                         Text(
-                          'Please create a new password for your account.',
+                          translation(context).please_create_password,
                           style: GoogleFonts.poppins(
                             color: kGrayColor,
                             fontSize: 15,
@@ -87,7 +88,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                         Row(
                           children: [
                             Text(
-                              'Password',
+                              translation(context).password,
                               style: GoogleFonts.poppins(
                                 color: kBlackColor,
                                 fontSize: 16,
@@ -105,7 +106,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                         Row(
                           children: [
                             Text(
-                              'Confirm Password',
+                              translation(context).confirm_password,
                               style: GoogleFonts.poppins(
                                 color: kBlackColor,
                                 fontSize: 16,
@@ -121,7 +122,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                         ),
                         const SizedBox(height: 20),
                         Text(
-                          'Password must:',
+                          translation(context).password_must_be,
                           style: GoogleFonts.poppins(
                             color: kGrayColor,
                             fontSize: 14,
@@ -135,7 +136,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '\u2022   08 characters long',
+                                translation(context).eight_characters,
                                 style: GoogleFonts.poppins(
                                   color: kGrayColor,
                                   fontSize: 14,
@@ -143,7 +144,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                                 ),
                               ),
                               Text(
-                                '\u2022   01 uppercase letter',
+                                translation(context).one_uppercase_letter,
                                 style: GoogleFonts.poppins(
                                   color: kGrayColor,
                                   fontSize: 14,
@@ -151,7 +152,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                                 ),
                               ),
                               Text(
-                                '\u2022   01 special character',
+                                translation(context).one_special_character,
                                 style: GoogleFonts.poppins(
                                   color: kGrayColor,
                                   fontSize: 14,
@@ -159,7 +160,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                                 ),
                               ),
                               Text(
-                                '\u2022   01 number',
+                                translation(context).one_number,
                                 style: GoogleFonts.poppins(
                                   color: kGrayColor,
                                   fontSize: 14,
@@ -167,7 +168,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                                 ),
                               ),
                               Text(
-                                '\u2022   no spaces',
+                                translation(context).no_spaces,
                                 style: GoogleFonts.poppins(
                                   color: kGrayColor,
                                   fontSize: 14,
@@ -181,20 +182,20 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                           height: 220,
                         ),
                         CustomSubmitButton(
-                          title: 'SUBMIT',
+                          title: translation(context).submit,
                           color: kPrimaryBlueColor,
                           onTap: () {
                             if (!validatePassword(passwordController.text)) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 errorSnackBar(
-                                    'The password you have entered does not meet the minimum security requirements'),
+                                  translation(context).password_seq),
                               );
                             } else {
                               if (_formKey.currentState!.validate()) {
                                 if (passwordController.text !=
                                     confirmPasswordController.text) {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    errorSnackBar('Password do not match'),
+                                    errorSnackBar(translation(context).password_not_match),
                                   );
                                 } else {
                                   Provider.of<AuthenticationService>(context,
