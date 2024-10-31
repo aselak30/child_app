@@ -17,7 +17,7 @@ class _FullPostScreenState extends State<FullPostScreen> {
   late Future<PostDetailsModel> postDetailsFuture;
   String? selectedLanguage = "english";
 
-  List<String> items = ['english', 'sinhala'];
+  List<String> items = ['english', 'sinhala', "tamil"];
 
   @override
   void initState() {

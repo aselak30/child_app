@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:chilld_app/constants.dart';
+import 'package:chilld_app/services/secure_storage_service.dart';
+import 'package:chilld_app/ui/mp/loging_screen/logging_screen.dart';
 import 'package:chilld_app/widgets/custom_outline_button.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:flutter/material.dart';
@@ -55,14 +57,14 @@ class ConfirmLogoutDialog extends StatelessWidget {
                 title: 'Yes',
                 color: kPrimaryBlueColor,
                 onTap: () {
-                  // SecureStorageManager().deleteAll();
-                  // Navigator.pushAndRemoveUntil(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const LoginScreen(),
-                  //   ),
-                  //   (route) => false,
-                  // );
+                  SecureStorageManager().deleteAll();
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoggingScreen(),
+                    ),
+                    (route) => false,
+                  );
                 },
               ),
               const SizedBox(height: 10),

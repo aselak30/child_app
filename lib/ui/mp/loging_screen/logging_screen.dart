@@ -6,6 +6,7 @@ import 'package:chilld_app/ui/mp/loading_screen/landing_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:chilld_app/widgets/custome_password_feild.dart';
 import 'package:chilld_app/widgets/custome_text_feild.dart';
+import 'package:chilld_app/widgets/snack_bars.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -146,13 +147,22 @@ class _LoggingScreenState extends State<LoggingScreen> {
                         title: 'LOGIN',
                         color: kPrimaryBlueColor,
                         onTap: () {
-                          // if (_formKey.currentState!.validate()) {
-                          AuthenticationService().login(
-                            context,
-                            usernamecontroller.text,
-                            passwordController.text,
-                          );
-                          // }
+                          if (usernamecontroller.text.isNotEmpty &&
+                              passwordController.text.isNotEmpty) {
+                            if (_formKey.currentState!.validate()) {
+                              AuthenticationService().login(
+                                context,
+                                usernamecontroller.text,
+                                passwordController.text,
+                              );
+                            }
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              errorSnackBar(
+                                  'Enter User Name and Password, and try Again!'),
+                            );
+                          }
+
                           // if (_formKey.currentState!.validate()) {
                           //   AuthenticationService().login(
                           //     context,
@@ -161,12 +171,12 @@ class _LoggingScreenState extends State<LoggingScreen> {
                           //     rememberMe,
                           //   );
                           // }
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const DashBoardScreen(),
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => const DashBoardScreen(),
+                          //   ),
+                          // );
                         },
                       ),
                     ],
