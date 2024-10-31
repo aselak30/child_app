@@ -1,3 +1,4 @@
+import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/models/post_list_model.dart';
 import 'package:chilld_app/services/posts_service.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -92,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               CustomSearchField(
                 controller: searchController,
-                hintText: 'Search here',
+                hintText:      translation(context).search_here,
                 onChanged: (value) {},
               ),
               const SizedBox(height: 16),
@@ -219,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
-                              'See more',
+                              translation(context).see_more,
                               style: GoogleFonts.poppins(
                                 color: Colors.blue,
                                 fontWeight: FontWeight.w600,

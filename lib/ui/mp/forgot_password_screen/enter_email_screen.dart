@@ -1,3 +1,4 @@
+import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/ui/mp/forgot_password_screen/submit_otp_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
@@ -49,7 +50,7 @@ class _EnterEmailScreenState extends State<EnterEmailScreen> {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'Enter Your Email',
+                    translation(context).enter_email,
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w600,
                     fontSize: 30,
@@ -57,7 +58,7 @@ class _EnterEmailScreenState extends State<EnterEmailScreen> {
                   ),
                 ),
                 Text(
-                  'Please enter your registered email.',
+                  translation(context).enter_registered_email,
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w400,
                     fontSize: 15,
@@ -72,7 +73,7 @@ class _EnterEmailScreenState extends State<EnterEmailScreen> {
                       Row(
                         children: [
                           Text(
-                            'Email Address',
+                  translation(context).email_address,
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -91,7 +92,7 @@ class _EnterEmailScreenState extends State<EnterEmailScreen> {
                         height: MediaQuery.of(context).size.height / 1.9,
                       ),
                       CustomSubmitButton(
-                        title: 'SUBMIT',
+                        title: translation(context).submit,
                         color: kPrimaryBlueColor,
                         onTap: () {
                           Navigator.push(

@@ -1,3 +1,4 @@
+import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/services/auth_service.dart';
 import 'package:chilld_app/ui/mp/bottom_naviagation_bar/dash_board_screen.dart';
@@ -59,7 +60,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'Log In',
+                  translation(context).log_in,
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w600,
                     fontSize: 35,
@@ -67,7 +68,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                   ),
                 ),
                 Text(
-                  'Log in to continue your account.',
+                  translation(context).login_to_continue,
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w400,
                     fontSize: 18,
@@ -82,7 +83,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                       Row(
                         children: [
                           Text(
-                            'User Name',
+                  translation(context).username,
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -101,7 +102,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                       Row(
                         children: [
                           Text(
-                            'Password',
+                          translation(context).password,
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -130,7 +131,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                               );
                             },
                             child: Text(
-                              'Forgot password?',
+                                translation(context).forget_password,
                               style: GoogleFonts.poppins(
                                 color: kBlackColor,
                                 fontSize: 16,
@@ -144,7 +145,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                         height: MediaQuery.of(context).size.height / 2.8,
                       ),
                       CustomSubmitButton(
-                        title: 'LOGIN',
+                        title: translation(context).login,
                         color: kPrimaryBlueColor,
                         onTap: () {
                           if (usernamecontroller.text.isNotEmpty &&

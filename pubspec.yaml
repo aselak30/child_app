@@ -10,6 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
 
   cupertino_icons: ^1.0.6
   google_fonts: ^6.2.1
@@ -53,6 +56,8 @@ flutter_native_splash:
     # ios_content_mode: center
 
   web: false
+  intl: ^0.19.0
+  shared_preferences: ^2.3.2
 
 
 
@@ -63,6 +68,7 @@ dev_dependencies:
   flutter_lints: ^3.0.0
 
 flutter:
+  generate: true
   uses-material-design: true
   assets:
     - assets/

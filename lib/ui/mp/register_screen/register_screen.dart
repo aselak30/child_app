@@ -1,3 +1,4 @@
+import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/ui/mp/register_screen/create_password_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
@@ -55,7 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'Register',
+                  translation(context).register,
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w600,
                     fontSize: 35,
@@ -63,7 +64,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 Text(
-                  'Create a new account.',
+                  translation(context).create_new_account,
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w400,
                     fontSize: 18,
@@ -78,7 +79,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Row(
                         children: [
                           Text(
-                            'First Name',
+                            translation(context).first_name,
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -97,7 +98,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Row(
                         children: [
                           Text(
-                            'last Name',
+                            translation(context).last_name,
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -116,7 +117,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Row(
                         children: [
                           Text(
-                            'User Name',
+                            translation(context).username,
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -173,7 +174,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Row(
                         children: [
                           Text(
-                            'Email Address',
+                            translation(context).email_address,
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -190,7 +191,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 120),
                       CustomSubmitButton(
-                        title: 'NEXT',
+                        title: translation(context).next,
                         color: kPrimaryBlueColor,
                         onTap: () {
                           if (_formKey.currentState!.validate()) {

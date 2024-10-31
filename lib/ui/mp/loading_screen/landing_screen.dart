@@ -1,3 +1,4 @@
+import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/size_config.dart';
 import 'package:chilld_app/ui/mp/loging_screen/logging_screen.dart';
@@ -59,7 +60,7 @@ class _LandingScreenState extends State<LandingScreen> {
                 //mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'The best place for children to get',
+                    translation(context).splash_one,
                     style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w400,
                       fontSize: 18,
@@ -69,7 +70,7 @@ class _LandingScreenState extends State<LandingScreen> {
                     ),
                   ),
                   Text(
-                    'advices & solutions.',
+                    translation(context).splash_two,
                     style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w400,
                       fontSize: 18,
@@ -86,7 +87,7 @@ class _LandingScreenState extends State<LandingScreen> {
               left: 0,
               right: 0,
               child: CustomSubmitButton(
-                title: 'LOGIN',
+                title: translation(context).login,
                 color: kPrimaryBlueColor,
                 onTap: () {
                   Navigator.push(
@@ -112,7 +113,7 @@ class _LandingScreenState extends State<LandingScreen> {
                   );
                 },
                 child: Text(
-                  'REGISTER',
+                  translation(context).register,
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w500,
                     fontSize: 18,
