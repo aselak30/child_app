@@ -3,6 +3,7 @@ import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/dialog/confirm_logout_dialog.dart';
 import 'package:chilld_app/main.dart';
+import 'package:chilld_app/ui/mp/profile_screen/edit_profile_screen.dart';
 import 'package:chilld_app/widgets/profile_menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -81,12 +82,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 const SizedBox(height: 25),
                 GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const MyPackageScreen(),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const EditProfileScreen(),
+                      ),
+                    );
                   },
                   child: ProfileMenuItem(
                     iconPath: kUserIcon,
