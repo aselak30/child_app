@@ -68,7 +68,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                        translation(context).create_password,
+                          translation(context).create_password,
                           style: GoogleFonts.poppins(
                             color: kBlackColor,
                             fontSize: 30,
@@ -188,25 +188,27 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                             if (!validatePassword(passwordController.text)) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 errorSnackBar(
-                                  translation(context).password_seq),
+                                    translation(context).password_seq),
                               );
                             } else {
                               if (_formKey.currentState!.validate()) {
                                 if (passwordController.text !=
                                     confirmPasswordController.text) {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    errorSnackBar(translation(context).password_not_match),
+                                    errorSnackBar(translation(context)
+                                        .password_not_match),
                                   );
                                 } else {
                                   Provider.of<AuthenticationService>(context,
                                           listen: false)
                                       .register(
-                                          context,
-                                          widget.userName,
-                                          widget.email,
-                                          passwordController.text,
-                                          widget.firstName,
-                                          widget.lastName);
+                                    context,
+                                    widget.userName,
+                                    widget.email,
+                                    passwordController.text,
+                                    widget.firstName,
+                                    widget.lastName,
+                                  );
                                 }
                               }
                             }

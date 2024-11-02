@@ -1,9 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/dialogs/custome_loading_dialog.dart';
+import 'package:chilld_app/models/login_model.dart';
 import 'package:chilld_app/services/secure_storage_service.dart';
 import 'package:chilld_app/ui/mp/bottom_naviagation_bar/dash_board_screen.dart';
 import 'package:chilld_app/ui/mp/loading_screen/landing_screen.dart';
@@ -94,6 +96,11 @@ class AuthenticationService extends ChangeNotifier {
         final responseData = json.decode(response.body);
         SecureStorageManager().storeToken(
           responseData['token'].toString(),
+        );
+        log(responseData.toString());
+
+        SecureStorageManager.saveUser(
+          user: LoginModel.fromJson(responseData),
         );
 
         applicationInit(context);

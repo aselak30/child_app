@@ -1,4 +1,9 @@
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:chilld_app/models/login_model.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SecureStorageManager {
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
@@ -47,5 +52,24 @@ class SecureStorageManager {
   // Method to delete the stored data
   Future<void> deleteAll() async {
     await _storage.deleteAll();
+  }
+
+  static Future<void> saveUser({required LoginModel user}) async {
+    String userData = json.encode(user.toJson());
+    log(userData);
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString("USER", userData);
+  }
+
+  static Future<LoginModel?> getUser() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? user = prefs.getString("USER");
+    if (user == null) {
+      return null;
+    } else {
+      log(user);
+      //print(json.decode(user));
+      return LoginModel.fromJson(json.decode(user));
+    }
   }
 }
