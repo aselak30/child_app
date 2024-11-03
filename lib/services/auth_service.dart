@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:chilld_app/constants.dart';
+import 'package:chilld_app/dialog/change_passowrd_dialog.dart';
 import 'package:chilld_app/dialogs/custome_loading_dialog.dart';
 import 'package:chilld_app/models/login_model.dart';
 import 'package:chilld_app/services/secure_storage_service.dart';
@@ -160,6 +161,57 @@ class AuthenticationService extends ChangeNotifier {
           MaterialPageRoute(
             builder: (context) => const RegisterSuccessScreen(),
           ),
+        );
+
+        notifyListeners();
+      } else {
+        final responseBody = jsonDecode(response.body);
+        final message = responseBody['message'];
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          errorSnackBar('Could not complete registration, $message.'),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        errorSnackBar(e.toString()),
+      );
+    }
+  }
+
+
+  Future<void> changePassword(
+      BuildContext context,
+      String email,
+      ) async {
+    Map<String, dynamic> data = {
+      "api_key": apiKey,
+      "user_login": email,
+    };
+
+    try {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const CustomLoadingDialog(
+          title: 'Loading..',
+        ),
+      );
+      final response = await http.post(
+        Uri.parse('${baseUrl}custom/v1/reset_password'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: jsonEncode(data),
+      );
+
+      Navigator.pop(context);
+
+      if (response.statusCode == 200) {
+        showDialog(
+          context: context,
+          builder: (context) => const ChangePassowrdDialog(),
         );
 
         notifyListeners();

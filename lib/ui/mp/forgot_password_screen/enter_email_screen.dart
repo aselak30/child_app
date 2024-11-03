@@ -1,10 +1,12 @@
 import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
+import 'package:chilld_app/services/auth_service.dart';
 import 'package:chilld_app/ui/mp/forgot_password_screen/submit_otp_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:chilld_app/widgets/cutstom_email_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class EnterEmailScreen extends StatefulWidget {
   const EnterEmailScreen({super.key});
@@ -16,9 +18,6 @@ class EnterEmailScreen extends StatefulWidget {
 class _EnterEmailScreenState extends State<EnterEmailScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
-  TextEditingController countryController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  bool rememberMe = false;
 
   @override
   void initState() {
@@ -50,7 +49,7 @@ class _EnterEmailScreenState extends State<EnterEmailScreen> {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                    translation(context).enter_email,
+                  translation(context).enter_email,
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w600,
                     fontSize: 30,
@@ -73,7 +72,7 @@ class _EnterEmailScreenState extends State<EnterEmailScreen> {
                       Row(
                         children: [
                           Text(
-                  translation(context).email_address,
+                            translation(context).email_address,
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -95,12 +94,8 @@ class _EnterEmailScreenState extends State<EnterEmailScreen> {
                         title: translation(context).submit,
                         color: kPrimaryBlueColor,
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SubmitOtpScreen(),
-                            ),
-                          );
+                          Provider.of<AuthenticationService>(context, listen: false)
+                              .changePassword(context, emailController.text);
                         },
                       ),
                     ],
