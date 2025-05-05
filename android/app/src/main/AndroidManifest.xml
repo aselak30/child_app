@@ -2,7 +2,7 @@
 <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:label="chilld_app"
+        android:label="SLU Kids"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

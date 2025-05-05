@@ -50,7 +50,7 @@ class ChangePassowrdDialog extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                'Please Check Your email Inbox or Spam ',
+                'Please Check Your email Inbox or Spam',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.openSans(
                   color: kGrayColor,
