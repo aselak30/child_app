@@ -31,11 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement initState
     super.initState();
     fetch();
-    listController.addListener(() {
-      if (listController.position.maxScrollExtent == listController.offset) {
-        fetch();
-      }
-    });
+    // listController.addListener(() {
+    //   if (listController.position.maxScrollExtent == listController.offset) {
+    //     fetch();
+    //   }
+    // });
   }
 
   Future fetch() async {

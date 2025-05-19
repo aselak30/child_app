@@ -135,7 +135,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                 height: 5,
                               ),
                               Text(
-                                '\u2022   01 special character',
+                                '\u2022  01 special character',
                                 style: GoogleFonts.poppins(
                                   color: kGrayColor.withOpacity(0.5),
                                   fontSize: 14,

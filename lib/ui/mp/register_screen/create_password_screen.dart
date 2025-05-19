@@ -48,183 +48,180 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
             horizontal: kHorizontalPadding,
             vertical: kVerticalPadding,
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: kBlackColor,
-                  ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back,
+                  color: kBlackColor,
                 ),
-                const SizedBox(height: 20),
-                Form(
-                    key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          translation(context).create_password,
-                          style: GoogleFonts.poppins(
-                            color: kBlackColor,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w600,
-                          ),
+              ),
+              const SizedBox(height: 20),
+              Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        translation(context).create_password,
+                        style: GoogleFonts.poppins(
+                          color: kBlackColor,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w600,
                         ),
-                        const SizedBox(height: 15),
-                        Text(
-                          translation(context).please_create_password,
-                          style: GoogleFonts.poppins(
-                            color: kGrayColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                          ),
+                      ),
+                      const SizedBox(height: 15),
+                      Text(
+                        translation(context).please_create_password,
+                        style: GoogleFonts.poppins(
+                          color: kGrayColor,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
                         ),
-                        const SizedBox(height: 20),
-                        Row(
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        children: [
+                          Text(
+                            translation(context).password,
+                            style: GoogleFonts.poppins(
+                              color: kBlackColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      CustomPasswordField(
+                        controller: passwordController,
+                        hintText: '**********',
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        children: [
+                          Text(
+                            translation(context).confirm_password,
+                            style: GoogleFonts.poppins(
+                              color: kBlackColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      CustomPasswordField(
+                        controller: confirmPasswordController,
+                        hintText: '**********',
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        translation(context).password_must_be,
+                        style: GoogleFonts.poppins(
+                          color: kGrayColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              translation(context).password,
+                              translation(context).eight_characters,
                               style: GoogleFonts.poppins(
-                                color: kBlackColor,
-                                fontSize: 16,
+                                color: kGrayColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Text(
+                              translation(context).one_uppercase_letter,
+                              style: GoogleFonts.poppins(
+                                color: kGrayColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Text(
+                              translation(context).one_special_character,
+                              style: GoogleFonts.poppins(
+                                color: kGrayColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Text(
+                              translation(context).one_number,
+                              style: GoogleFonts.poppins(
+                                color: kGrayColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Text(
+                              translation(context).no_spaces,
+                              style: GoogleFonts.poppins(
+                                color: kGrayColor,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 10),
-                        CustomPasswordField(
-                          controller: passwordController,
-                          hintText: '**********',
-                        ),
-                        const SizedBox(height: 20),
-                        Row(
-                          children: [
-                            Text(
-                              translation(context).confirm_password,
-                              style: GoogleFonts.poppins(
-                                color: kBlackColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                        CustomPasswordField(
-                          controller: confirmPasswordController,
-                          hintText: '**********',
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
-                          translation(context).password_must_be,
-                          style: GoogleFonts.poppins(
-                            color: kGrayColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                translation(context).eight_characters,
-                                style: GoogleFonts.poppins(
-                                  color: kGrayColor,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              Text(
-                                translation(context).one_uppercase_letter,
-                                style: GoogleFonts.poppins(
-                                  color: kGrayColor,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              Text(
-                                translation(context).one_special_character,
-                                style: GoogleFonts.poppins(
-                                  color: kGrayColor,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              Text(
-                                translation(context).one_number,
-                                style: GoogleFonts.poppins(
-                                  color: kGrayColor,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              Text(
-                                translation(context).no_spaces,
-                                style: GoogleFonts.poppins(
-                                  color: kGrayColor,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 220,
-                        ),
-                        CustomSubmitButton(
-                          title: translation(context).submit,
-                          color: kPrimaryBlueColor,
-                          onTap: () {
-                            if (!validatePassword(passwordController.text)) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                errorSnackBar(
-                                    translation(context).password_seq),
-                              );
-                            } else {
-                              if (_formKey.currentState!.validate()) {
-                                if (passwordController.text !=
-                                    confirmPasswordController.text) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    errorSnackBar(translation(context)
-                                        .password_not_match),
-                                  );
-                                } else {
-                                  Provider.of<AuthenticationService>(context,
-                                          listen: false)
-                                      .register(
-                                    context,
-                                    widget.userName,
-                                    widget.email,
-                                    passwordController.text,
-                                    widget.firstName,
-                                    widget.lastName,
-                                  );
-                                }
+                      ),
+                      const SizedBox(
+                        height: 220,
+                      ),
+                      CustomSubmitButton(
+                        title: translation(context).submit,
+                        color: kPrimaryBlueColor,
+                        onTap: () {
+                          if (!validatePassword(passwordController.text)) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              errorSnackBar(translation(context).password_seq),
+                            );
+                          } else {
+                            if (_formKey.currentState!.validate()) {
+                              if (passwordController.text !=
+                                  confirmPasswordController.text) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  errorSnackBar(
+                                      translation(context).password_not_match),
+                                );
+                              } else {
+                                Provider.of<AuthenticationService>(context,
+                                        listen: false)
+                                    .register(
+                                  context,
+                                  widget.userName,
+                                  widget.email,
+                                  passwordController.text,
+                                  widget.firstName,
+                                  widget.lastName,
+                                );
                               }
                             }
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) =>
-                            //         const RegisterSuccessScreen(),
-                            //   ),
-                            // );
-                          },
-                        ),
-                      ],
-                    ))
-              ],
-            ),
+                          }
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) =>
+                          //         const RegisterSuccessScreen(),
+                          //   ),
+                          // );
+                        },
+                      ),
+                    ],
+                  ))
+            ],
           ),
         ),
       ),
