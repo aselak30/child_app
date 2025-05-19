@@ -7,7 +7,6 @@ import 'package:chilld_app/ui/mp/profile_screen/edit_profile_screen.dart';
 import 'package:chilld_app/widgets/profile_menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -110,67 +109,69 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  backgroundColor: kWhiteColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                  ),
-                  builder: (BuildContext context) {
-                    return Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            translation(context).language,
-                            style: TextStyle(
-                              color: kBlackColor,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          ListView(
-                            shrinkWrap: true,
-                            children: Language.languageList()
-                                .map(
-                                  (language) => ListTile(
-                                title: Center(
-                                  child: Text(
-                                    language.name,
-                                    style: TextStyle(
-                                      color: kBlackColor,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                                onTap: () async {
-                                  Locale _locale = await setLocale(language.languagecode);
-                                  MyApp.setLocale(context, _locale);
-                                  Navigator.of(context).pop(); // Close the bottom sheet after selection
-                                },
-                              ),
-                            )
-                                .toList(),
-                          ),
-                        ],
+                GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      backgroundColor: kWhiteColor,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(20)),
                       ),
+                      builder: (BuildContext context) {
+                        return Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                translation(context).language,
+                                style: TextStyle(
+                                  color: kBlackColor,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 16),
+                              ListView(
+                                shrinkWrap: true,
+                                children: Language.languageList()
+                                    .map(
+                                      (language) => ListTile(
+                                        title: Center(
+                                          child: Text(
+                                            language.name,
+                                            style: TextStyle(
+                                              color: kBlackColor,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                        onTap: () async {
+                                          Locale _locale = await setLocale(
+                                              language.languagecode);
+                                          MyApp.setLocale(context, _locale);
+                                          Navigator.of(context)
+                                              .pop(); // Close the bottom sheet after selection
+                                        },
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
                     );
                   },
-                );
+                  child: ProfileMenuItem(
+                    iconPath: kLanguageIcon,
+                    menuTitle: translation(context).language,
+                  ),
+                ),
 
-              },
-              child: ProfileMenuItem(
-                iconPath: kLanguageIcon,
-                menuTitle: translation(context).language,
-              ),
-            ),
-
-            const SizedBox(height: 20),
+                const SizedBox(height: 20),
                 // GestureDetector(
                 //   onTap: () {
                 //     Navigator.push(

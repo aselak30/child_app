@@ -122,6 +122,42 @@ class _FullPostScreenState extends State<FullPostScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Text(
+                    //   postDetails.translatedTitle,
+                    //   style: GoogleFonts.poppins(
+                    //     fontSize: 24,
+                    //     fontWeight: FontWeight.w600,
+                    //     color: kBlackColor,
+                    //   ),
+                    // ),
+                    // const SizedBox(height: 20),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child:
+                          // postDetails.featuredImage == false
+                          //     ? Image.asset(
+                          //         kPostImage,
+                          //         height: 150,
+                          //         width: double.infinity,
+                          //         fit: BoxFit.cover,
+                          //       )
+                          //     :
+                          //     Image.network(
+                          //   postDetails.featuredImage,
+                          //   height: 150,
+                          //   width: double.infinity,
+                          //   fit: BoxFit.cover,
+                          // ),
+                          postDetails.featuredImage == true
+                              ? Image.network(
+                                  postDetails.featuredImage,
+                                  height: 150,
+                                  width: double.infinity,
+                                  fit: BoxFit.cover,
+                                )
+                              : const SizedBox.shrink(),
+                    ),
+                    const SizedBox(height: 20),
                     Text(
                       postDetails.translatedTitle,
                       style: GoogleFonts.poppins(
@@ -129,23 +165,6 @@ class _FullPostScreenState extends State<FullPostScreen> {
                         fontWeight: FontWeight.w600,
                         color: kBlackColor,
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: postDetails.featuredImage == false
-                          ? Image.asset(
-                              kPostImage,
-                              height: 150,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            )
-                          : Image.network(
-                              postDetails.featuredImage,
-                              height: 150,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
                     ),
                     const SizedBox(height: 20),
                     Text(

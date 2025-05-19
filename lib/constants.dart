@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 var authToken = '';
-var baseUrl = 'https://uni.squartal.com/wp-json/';
+// var baseUrl = 'https://uni.squartal.com/wp-json/';
+var baseUrl = 'https://gym.loomodmail.com/wp-json/';
 var apiKey = 'ff060aa91d525ff681745819edbdac32abc362006d11cde5fcd64cae2119126e';
 
 var kPrimaryBlueColor = const Color(0XFF0E4D94);

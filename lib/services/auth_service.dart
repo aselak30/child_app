@@ -153,6 +153,8 @@ class AuthenticationService extends ChangeNotifier {
         body: jsonEncode(data),
       );
 
+      log(response.body.toString());
+
       Navigator.pop(context);
 
       if (response.statusCode == 200) {
@@ -179,11 +181,10 @@ class AuthenticationService extends ChangeNotifier {
     }
   }
 
-
   Future<void> changePassword(
-      BuildContext context,
-      String email,
-      ) async {
+    BuildContext context,
+    String email,
+  ) async {
     Map<String, dynamic> data = {
       "api_key": apiKey,
       "user_login": email,

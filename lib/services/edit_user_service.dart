@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/models/login_model.dart';
-import 'package:chilld_app/models/post_details_model.dart';
-import 'package:chilld_app/models/post_list_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 

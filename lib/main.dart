@@ -3,7 +3,6 @@ import 'package:chilld_app/services/auth_service.dart';
 import 'package:chilld_app/ui/mp/loading_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
@@ -17,7 +16,7 @@ class MyApp extends StatefulWidget {
 
   @override
   State<MyApp> createState() => _MyAppState();
-  static void setLocale(BuildContext context, Locale newLocale){
+  static void setLocale(BuildContext context, Locale newLocale) {
     _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
     state?.setLocale(newLocale);
   }
@@ -26,16 +25,18 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
 
-  setLocale(Locale locale){
+  setLocale(Locale locale) {
     setState(() {
       _locale = locale;
     });
   }
+
   @override
-  void didChangeDependencies(){
+  void didChangeDependencies() {
     getLocale().then((locale) => setLocale(locale));
     super.didChangeDependencies();
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -1,7 +1,6 @@
 import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/services/auth_service.dart';
-import 'package:chilld_app/ui/mp/forgot_password_screen/submit_otp_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:chilld_app/widgets/cutstom_email_feild.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +93,8 @@ class _EnterEmailScreenState extends State<EnterEmailScreen> {
                         title: translation(context).submit,
                         color: kPrimaryBlueColor,
                         onTap: () {
-                          Provider.of<AuthenticationService>(context, listen: false)
+                          Provider.of<AuthenticationService>(context,
+                                  listen: false)
                               .changePassword(context, emailController.text);
                         },
                       ),

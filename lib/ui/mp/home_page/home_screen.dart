@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               CustomSearchField(
                 controller: searchController,
-                hintText:      translation(context).search_here,
+                hintText: translation(context).search_here,
                 onChanged: (value) {},
               ),
               const SizedBox(height: 16),
@@ -146,25 +146,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RichText(
-          text: TextSpan(
-            text: item.title,
-            style: GoogleFonts.poppins(
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
-              color: kBlackColor,
-            ),
-            // children: <TextSpan>[
-            //   TextSpan(
-            //     text: " Counts",
-            //     style: GoogleFonts.poppins(
-            //         color: kOrangeColor,
-            //         fontSize: 24,
-            //         fontWeight: FontWeight.w600),
-            //   ),
-            // ],
-          ),
-        ),
         Padding(
           padding: const EdgeInsets.only(top: 10, bottom: 10),
           child: Card(
@@ -174,26 +155,51 @@ class _HomeScreenState extends State<HomeScreen> {
             elevation: 4,
             child: Column(
               children: [
-                item.featuredImage.isNotEmpty
-                    // item.featuredImage != ""
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Image.network(
-                          item.featuredImage,
-                          height: 150,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                    : ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Image.asset(
-                          kPostImage,
-                          height: 150,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
+                // item.featuredImage.isNotEmpty
+                //     ?
+                Visibility(
+                  visible: item.featuredImage.isNotEmpty,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.network(
+                      item.featuredImage,
+                      height: 150,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                // : ClipRRect(
+                //     borderRadius: BorderRadius.circular(15),
+                //     child: Image.asset(
+                //       kPostImage,
+                //       height: 150,
+                //       width: double.infinity,
+                //       fit: BoxFit.cover,
+                //     ),
+                //   ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: RichText(
+                    text: TextSpan(
+                      text: item.title,
+                      style: GoogleFonts.poppins(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                        color: kBlackColor,
                       ),
+                      // children: <TextSpan>[
+                      //   TextSpan(
+                      //     text: " Counts",
+                      //     style: GoogleFonts.poppins(
+                      //         color: kOrangeColor,
+                      //         fontSize: 24,
+                      //         fontWeight: FontWeight.w600),
+                      //   ),
+                      // ],
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(

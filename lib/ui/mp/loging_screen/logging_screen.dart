@@ -1,7 +1,6 @@
 import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/services/auth_service.dart';
-import 'package:chilld_app/ui/mp/bottom_naviagation_bar/dash_board_screen.dart';
 import 'package:chilld_app/ui/mp/forgot_password_screen/enter_email_screen.dart';
 import 'package:chilld_app/ui/mp/loading_screen/landing_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
@@ -83,7 +82,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                       Row(
                         children: [
                           Text(
-                  translation(context).username,
+                            translation(context).username,
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -102,7 +101,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                       Row(
                         children: [
                           Text(
-                          translation(context).password,
+                            translation(context).password,
                             style: GoogleFonts.poppins(
                               color: kBlackColor,
                               fontSize: 16,
@@ -131,7 +130,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                               );
                             },
                             child: Text(
-                                translation(context).forget_password,
+                              translation(context).forget_password,
                               style: GoogleFonts.poppins(
                                 color: kBlackColor,
                                 fontSize: 16,

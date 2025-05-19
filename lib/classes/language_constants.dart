@@ -9,27 +9,27 @@ const String SINHALA = 'si';
 const String TAMIL = 'ta';
 
 Future<Locale> setLocale(String languageCode) async {
-  SharedPreferences _prefs = await SharedPreferences.getInstance();
-  await _prefs.setString(LANGUAGE_CODE, languageCode);
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setString(LANGUAGE_CODE, languageCode);
   return _locale(languageCode);
 }
 
 Future<Locale> getLocale() async {
-  SharedPreferences _prefs = await SharedPreferences.getInstance();
-  String languageCode = _prefs.getString(LANGUAGE_CODE) ?? ENGLISH;
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String languageCode = prefs.getString(LANGUAGE_CODE) ?? ENGLISH;
   return _locale(languageCode);
 }
 
 Locale _locale(String languageCode) {
   switch (languageCode) {
     case ENGLISH:
-      return Locale(ENGLISH, 'US');
+      return const Locale(ENGLISH, 'US');
     case SINHALA:
-      return Locale(SINHALA, 'LK');
+      return const Locale(SINHALA, 'LK');
     case TAMIL:
-      return Locale(TAMIL, 'IN');
+      return const Locale(TAMIL, 'IN');
     default:
-      return Locale(ENGLISH, 'US');
+      return const Locale(ENGLISH, 'US');
   }
 }
 
