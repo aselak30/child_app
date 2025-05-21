@@ -139,7 +139,7 @@ class _LoggingScreenState extends State<LoggingScreen> {
                       ],
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 2.8,
+                      height: MediaQuery.of(context).size.height / 3.0,
                     ),
                     CustomSubmitButton(
                       title: translation(context).login,
