@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 var authToken = '';
 // var baseUrl = 'https://uni.squartal.com/wp-json/';
-var baseUrl = 'https://gym.loomodmail.com/wp-json/';
+// var baseUrl = 'https://gym.loomodmail.com/wp-json/';
+var baseUrl = 'http://kids.srilankaunites.org/wp-json/';
 var apiKey = 'ff060aa91d525ff681745819edbdac32abc362006d11cde5fcd64cae2119126e';
 
 var kPrimaryBlueColor = const Color(0XFF0E4D94);
@@ -29,6 +30,7 @@ var kUserIcon = 'assets/user_icon.png';
 var kChatIcon1 = 'assets/chat_icon_1.png';
 var kLanguageIcon = 'assets/language_icon.png';
 var kContactSupportIcon = 'assets/contact_support_icon.png';
+var kFAQsIcon = 'assets/FAQs.png';
 var kLogOutIcon = 'assets/logout_icon.png';
 var kSettingIcon = 'assets/setting_icon.png';
 

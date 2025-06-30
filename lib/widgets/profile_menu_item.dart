@@ -1,4 +1,3 @@
-
 import 'package:chilld_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,6 +28,7 @@ class ProfileMenuItem extends StatelessWidget {
             child: Row(
               children: [
                 Image.asset(
+                  height: 20,
                   iconPath,
                   color: kBlackColor,
                 ),

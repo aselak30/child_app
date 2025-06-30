@@ -3,6 +3,7 @@ import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/dialog/confirm_logout_dialog.dart';
 import 'package:chilld_app/main.dart';
+import 'package:chilld_app/ui/mp/faq_screen/faq_screen.dart';
 import 'package:chilld_app/ui/mp/profile_screen/edit_profile_screen.dart';
 import 'package:chilld_app/widgets/profile_menu_item.dart';
 import 'package:flutter/material.dart';
@@ -149,9 +150,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           ),
                                         ),
                                         onTap: () async {
-                                          Locale _locale = await setLocale(
+                                          Locale locale = await setLocale(
                                               language.languagecode);
-                                          MyApp.setLocale(context, _locale);
+                                          MyApp.setLocale(context, locale);
                                           Navigator.of(context)
                                               .pop(); // Close the bottom sheet after selection
                                         },
@@ -204,6 +205,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: ProfileMenuItem(
                     iconPath: kContactSupportIcon,
                     menuTitle: translation(context).help_support,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FaqScreen(),
+                      ),
+                    );
+                  },
+                  child: ProfileMenuItem(
+                    iconPath: kFAQsIcon,
+                    menuTitle: translation(context).faqs,
                   ),
                 ),
                 const SizedBox(height: 20),

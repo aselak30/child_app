@@ -39,5 +39,73 @@
   "next": "NEXT",
   "password_not_match": "Password do not match",
   "password_seq": "The password you have entered does not meet the minimum security requirements",
-  "home": "Home"
+  "home": "Home",
+  "faqs":"FAQs",
+
+
+  "faq_school_q": "How long should I study in school?",
+  "faq_school_a": "In Sri Lanka, the mandatory age for education is between 5 and 16 years. Parents are legally required to ensure that their children attend school during this period. But it’s always better to finish school at the correct age (after A/Ls).",
+
+  "faq_report_violation_q": "How can I report a violation?",
+  "faq_report_violation_a": "Re-direct to the – Reporting numbers + departments/ Orgs",
+
+  "faq_vote_q": "Can I vote/ Do I have a right to vote?",
+  "faq_vote_a": "No, to vote you have to be above 18 years old.",
+
+  "faq_safe_online_q": "Do I have a right to be safe online?",
+  "faq_safe_online_a": "Yes, children in Sri Lanka have the right to be safe online.",
+
+  "faq_drive_q": "Can I drive/ How old should I be able to drive?",
+  "faq_drive_a": "To be able to drive you should be 18 years or above.",
+
+  "faq_rights_age_q": "How old should I be to get these/my rights?",
+  "faq_rights_age_a": "It is your Birth right.",
+
+  "faq_sue_q": "Can a child sue a person or an organisation in courts?",
+  "faq_sue_a": "Yes, under Sri Lankan law, children have certain legal rights and protections.",
+
+  "faq_convict_q": "Can a child be convicted of a crime?",
+  "faq_convict_a": "The Children and Young Persons Ordinance in Sri Lanka provides guidelines for dealing with children who are involved in criminal activities.",
+
+  "faq_work_q": "Can a child engage in economic activities?",
+  "faq_work_a": "Yes, above 16. but any child could help their parents in their respective economic activities/engagements (Agri)",
+
+  "faq_who_is_child_q": "Who is a child?",
+  "faq_who_is_child_a": "Any person under the age of 18 is seen as a child.",
+
+  "faq_parents_rights_q": "Does my mother/father have these rights?",
+  "faq_parents_rights_a": "Yes, It’s called human rights.",
+
+  "faq_rights_not_respected_q": "What happens if my rights are not respected?",
+  "faq_rights_not_respected_a": "If you feel like your rights are not being respected, it’s important to tell a trusted grown-up.",
+
+  "faq_family_move_q": "What happens if my family moves to a different country?",
+  "faq_family_move_a": "Even if you move to a different country, you still have the same rights.",
+
+  "faq_rights_violated_by_known_q": "What if my rights are violated by someone I know?",
+  "faq_rights_violated_by_known_a": "You can also report it by calling 1929, which is the Childline of the National Child Protection Authority.",
+
+  "faq_boys_girls_rights_q": "Are there different rights for boys and girls?",
+  "faq_boys_girls_rights_a": "No, boys and girls have the same rights.",
+
+  "faq_lose_rights_q": "Can I lose my rights?",
+  "faq_lose_rights_a": "No, you can’t lose your rights. Your rights are yours from the moment you’re born.",
+
+  "faq_promote_rights_q": "How can I help promote child rights?",
+  "faq_promote_rights_a": "You can help promote child rights by learning about your rights and sharing that knowledge with others.",
+
+  "faq_see_rights_ignored_q": "What can I do if I see my friend’s or my rights being ignored?",
+  "faq_see_rights_ignored_a": "You can speak up and tell a grown-up you trust, like a teacher or a parent.",
+
+  "faq_who_made_rules_q": "Who made the rules for child rights?",
+  "faq_who_made_rules_a": "The rules were made by grown-ups from different countries to protect all children.",
+
+  "faq_examples_q": "What are some examples of child rights?",
+  "faq_examples_a": "Some examples include the right to go to school, be safe, play, eat, and express your opinions.",
+
+  "faq_different_rights_q": "Can children have different rights?",
+  "faq_different_rights_a": "No matter where you live or what you look like, all children have the same basic rights."
+
+
+  
 }
