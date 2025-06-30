@@ -3,7 +3,6 @@ import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/services/auth_service.dart';
 import 'package:chilld_app/ui/mp/forgot_password_screen/enter_email_screen.dart';
 import 'package:chilld_app/ui/mp/loading_screen/landing_screen.dart';
-import 'package:chilld_app/ui/mp/profile_screen/profile_screen.dart';
 import 'package:chilld_app/widgets/custom_submit_button.dart';
 import 'package:chilld_app/widgets/custome_password_feild.dart';
 import 'package:chilld_app/widgets/custome_text_feild.dart';
