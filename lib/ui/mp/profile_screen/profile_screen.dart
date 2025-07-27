@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:chilld_app/classes/language.dart';
 import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/dialog/confirm_logout_dialog.dart';
 import 'package:chilld_app/main.dart';
+import 'package:chilld_app/models/login_model.dart';
+import 'package:chilld_app/services/secure_storage_service.dart';
 import 'package:chilld_app/ui/mp/faq_screen/faq_screen.dart';
 import 'package:chilld_app/ui/mp/profile_screen/edit_profile_screen.dart';
 import 'package:chilld_app/widgets/profile_menu_item.dart';
@@ -17,6 +21,34 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  LoginModel? user;
+  String userName = '';
+  String email = '';
+  String name = '';
+
+  @override
+  initState() {
+    super.initState();
+    getLoginData();
+  }
+
+  void getLoginData() async {
+    log(user.toString());
+    user = await SecureStorageManager.getUser();
+    setState(() {
+      userName = user?.username ?? '';
+      email = user?.email ?? '';
+      name = '${user!.firstName} ${user?.lastName ?? ''}';
+    });
+
+    // setState(() {
+    //   firstNameController.text = user!.firstName!;
+    //   lastNameController.text = user!.lastName!;
+    //   userNameController.text = user!.username!;
+    //   emailController.text = user!.email!;
+    // });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +74,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Alexander Flinch',
+                  userName.isNotEmpty ? userName : 'User Name',
+                  // 'Alexander Flinch',
                   style: GoogleFonts.poppins(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -52,25 +85,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Email
-                    const Icon(Icons.email, size: 16, color: Colors.grey),
+                    //Name
+                    const Icon(
+                      Icons.person,
+                      size: 16,
+                      color: Colors.grey,
+                    ),
                     const SizedBox(width: 5),
                     Text(
-                      'alex@gmail.com',
+                      name.isNotEmpty ? name : 'Name',
                       style: GoogleFonts.poppins(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
                     const SizedBox(width: 20),
-                    const Icon(
-                      Icons.phone,
-                      size: 16,
-                      color: Colors.grey,
-                    ),
+
+                    // Email
+                    const Icon(Icons.email, size: 16, color: Colors.grey),
                     const SizedBox(width: 5),
                     Text(
-                      '+94 77 777 7777',
+                      email.isNotEmpty ? email : 'Email',
                       style: GoogleFonts.poppins(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
@@ -94,21 +129,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     menuTitle: translation(context).edit_profile,
                   ),
                 ),
-                const SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const MyPromotionScreen(),
-                    //   ),
-                    // );
-                  },
-                  child: ProfileMenuItem(
-                    iconPath: kChatIcon1,
-                    menuTitle: translation(context).chat_now,
-                  ),
-                ),
+                // const SizedBox(height: 20),
+                // GestureDetector(
+                //   onTap: () {
+                //     // Navigator.push(
+                //     //   context,
+                //     //   MaterialPageRoute(
+                //     //     builder: (context) => const MyPromotionScreen(),
+                //     //   ),
+                //     // );
+                //   },
+                //   child: ProfileMenuItem(
+                //     iconPath: kChatIcon1,
+                //     menuTitle: translation(context).chat_now,
+                //   ),
+                // ),
                 const SizedBox(height: 20),
                 GestureDetector(
                   onTap: () {
@@ -188,26 +223,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 //   ),
                 // ),
                 // const SizedBox(height: 10),
-                ProfileMenuItem(
-                  iconPath: kSettingIcon,
-                  menuTitle: translation(context).settings,
-                ),
-                const SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const SettingsScreen(),
-                    //   ),
-                    // );
-                  },
-                  child: ProfileMenuItem(
-                    iconPath: kContactSupportIcon,
-                    menuTitle: translation(context).help_support,
-                  ),
-                ),
-                const SizedBox(height: 20),
+                // ProfileMenuItem(
+                //   iconPath: kSettingIcon,
+                //   menuTitle: translation(context).settings,
+                // ),
+                // const SizedBox(height: 20),
+                // GestureDetector(
+                //   onTap: () {
+                //     // Navigator.push(
+                //     //   context,
+                //     //   MaterialPageRoute(
+                //     //     builder: (context) => const SettingsScreen(),
+                //     //   ),
+                //     // );
+                //   },
+                //   child: ProfileMenuItem(
+                //     iconPath: kContactSupportIcon,
+                //     menuTitle: translation(context).help_support,
+                //   ),
+                // ),
+                // const SizedBox(height: 20),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(

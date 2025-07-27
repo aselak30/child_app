@@ -19,7 +19,8 @@ var kGirlImage = 'assets/girl.png';
 var kBoyImage = 'assets/boy.png';
 var kLoggingImage = 'assets/loging_image.png';
 var kSplashImage = 'assets/splash_image.png';
-var kPlaceHolderImage = 'assets/place_holder.png';
+var kPlaceHolderImage = 'assets/profile.png';
+// var kPlaceHolderImage = 'assets/place_holder.png';
 var kPostImage = 'assets/post_image_holder.png';
 var noData = 'assets/noData.gif';
 
@@ -33,6 +34,10 @@ var kContactSupportIcon = 'assets/contact_support_icon.png';
 var kFAQsIcon = 'assets/FAQs.png';
 var kLogOutIcon = 'assets/logout_icon.png';
 var kSettingIcon = 'assets/setting_icon.png';
+var coverImage = 'assets/cover.jpg';
+var kCardAvatar = 'assets/cardAvatar.jpg';
+
+// var cardAvatar = 'assets/cardAvatar.jpg';
 
 var kHorizontalPadding = 25.0;
 var kVerticalPadding = 25.0;

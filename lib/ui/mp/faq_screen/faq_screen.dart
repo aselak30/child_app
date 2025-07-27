@@ -91,6 +91,7 @@
 
 //   FAQ(this.question, this.answer);
 // }
+import 'package:chilld_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/ui/mp/faq_screen/faq_details.dart';
@@ -155,64 +156,145 @@ class FaqScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final faq = faqs[index];
           return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => FaqDetailsScreen(
-                    question: faq.question,
-                    answer: faq.answer,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => FaqDetailsScreen(
+                      question: faq.question,
+                      answer: faq.answer,
+                    ),
+                  ),
+                );
+              },
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  side: const BorderSide(color: Colors.blueAccent, width: 1.2),
+                ),
+                elevation: 0,
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                child: SizedBox(
+                  height: 140, // Uniform height for all cards
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // 🟦 Row with image and title
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: Image.asset(
+                                      kCardAvatar,
+                                      height: 40,
+                                      width: 40,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 12),
+                                  Expanded(
+                                    child: Text(
+                                      faq.question,
+                                      style: const TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.blueAccent,
+                                      ),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+
+                              const SizedBox(height: 8),
+
+                              // 🟨 Divider line
+                              Container(
+                                height: 1,
+                                width: 150,
+                                color: Colors.grey.shade300,
+                              ),
+
+                              const SizedBox(height: 8),
+
+                              // 🟩 Description text
+                              Text(
+                                faq.answer,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black54,
+                                  height: 1.4,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              );
-            },
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              elevation: 3,
-              margin: const EdgeInsets.symmetric(vertical: 8),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Icon(Icons.question_answer_outlined,
-                        size: 28, color: Colors.blueAccent),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            faq.question,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          const SizedBox(height: 6),
-                          Text(
-                            faq.answer,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: Colors.black54,
-                            ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Icon(Icons.arrow_forward_ios,
-                        size: 16, color: Colors.grey),
-                  ],
-                ),
-              ),
-            ),
-          );
+              ));
+
+          // Card(
+          //   shape: RoundedRectangleBorder(
+          //     borderRadius: BorderRadius.circular(16),
+          //   ),
+          //   elevation: 3,
+          //   margin: const EdgeInsets.symmetric(vertical: 8),
+          //   child: Padding(
+          //     padding: const EdgeInsets.fromLTRB(
+          //         20, 16, 16, 16), // increased left padding
+          //     child: Row(
+          //       crossAxisAlignment:
+          //           CrossAxisAlignment.center, // changed to center
+          //       children: [
+          //         const Icon(Icons.question_answer_outlined,
+          //             size: 28, color: Colors.blueAccent),
+          //         const SizedBox(
+          //             width:
+          //                 16), // slightly more space between icon and text
+          //         Expanded(
+          //           child: Column(
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Text(
+          //                 faq.question,
+          //                 style: const TextStyle(
+          //                   fontSize: 16,
+          //                   fontWeight: FontWeight.bold,
+          //                   color: Colors.black87,
+          //                 ),
+          //               ),
+          //               const SizedBox(height: 6),
+          //               Text(
+          //                 faq.answer,
+          //                 style: const TextStyle(
+          //                   fontSize: 14,
+          //                   color: Colors.black54,
+          //                 ),
+          //                 maxLines: 2,
+          //                 overflow: TextOverflow.ellipsis,
+          //               ),
+          //             ],
+          //           ),
+          //         ),
+          //         const Icon(Icons.arrow_forward_ios,
+          //             size: 24, color: Colors.grey),
+          //       ],
+          //     ),
+          //   ),
+          // ));
         },
       ),
     );
