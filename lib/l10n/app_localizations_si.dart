@@ -288,4 +288,59 @@ class AppLocalizationsSi extends AppLocalizations {
   @override
   String get faq_different_rights_a =>
       'ඔබ කොහෙ ජීවත් වෙන්නෙ හෝ ඔබේ රූපය කෙසේ වෙන්නෙ වුවද, සියලු දරුවන්ට සමාන මුලික හිමිකම් ඇත.';
+
+  @override
+  String get learn_your_rights => 'ඔබේ අයිතිවාසිකම් ඉගෙන ගන්න';
+
+  @override
+  String get what_are_child_rights => 'ළමා අයිතිවාසිකම් මොනවාද?';
+
+  @override
+  String get uncrc_child_rights_definition =>
+      'UNCRC ළමා අයිතිවාසිකම් වලට අනුව වයස අවුරුදු 18 ට අඩු සියලුම පුද්ගලයින්ට ජාතිය, වර්ණය, ස්ත්‍රී පුරුෂ භාවය, භාෂාව, ආගම, අදහස්, සම්භවය, ධනය, උපත් තත්ත්‍වය හෝ හැකියාව නොතකා ලබා දිය යුතු අවම හිමිකම් සහ නිදහස වන අතර එම නිසා සෑම තැනකම සියලුම මිනිසුන්ට අදාළ වේ.';
+
+  @override
+  String get how_do_child_rights_help => 'ළමා අයිතිවාසිකම් ඔබට කෙසේ උදව් වේද?';
+
+  @override
+  String get child_rights_description =>
+      'ළමා අයිතිවාසිකම් යනු ඔබව ආරක්ෂා කරන පලිහක් බඳු වන අතර ඔබට සතුටින් හා තෘප්තිමත් ජීවිතයක් ගත කිරීමට උපකාරී වේ. වැසි දිනයක විශාල කුඩයක් ගැන සිතන්න – ළමා අයිතිවාසිකම් යනු එම කුඩය වැනිය, ඔබව ආරක්ෂිතව තබයි. ළමා අයිතිවාසිකම් ඔබට උපකාර වන ආකාරය මෙන්න:';
+
+  @override
+  String get protect_from_harm =>
+      'හානියෙන් ඔබව ආරක්ෂා කර ඔබට ආරක්ෂිත සහ ආදරණීය නිවසක් ඇති බවට සහතික වීම.';
+
+  @override
+  String get guarantee_education =>
+      'ඔබේ සිහින සැබෑ කර ගැනීමට ඔබට ශක්තිය ලබා දෙමින් අධ්‍යාපනයට ඇති ඔබේ අයිතිය සහතික කිරීම.';
+
+  @override
+  String get access_healthcare =>
+      'ඔබේ සමස්ත යහපැවැත්ම ප්‍රවර්ධනය කරමින් සෞඛ්‍ය සේවා සහ පෝෂ්‍යදායී ආහාර සඳහා ප්‍රවේශය ලබා දෙන්න.';
+
+  @override
+  String get give_a_voice =>
+      'ඔබේ අදහස්වලට සවන්දීම සහ ගරු කිරීම සහතික කරමින් ඔබට හඬක් දීම.';
+
+  @override
+  String get fight_discrimination =>
+      'සෑම දරුවෙකුටම සාධාරණව හා සමානව සලකන බව සහතික කරමින් වෙනස්කම් කිරීමට එරෙහිව සටන් කිරීම.';
+
+  @override
+  String get summary_superpower =>
+      'සාරාංශයක් ලෙස, ළමා අයිතිවාසිකම් ඔබේ සුපිරි බල වැනි වන අතර, ඔබට පැමිණෙන ඕනෑම අභියෝගයක් ජය ගැනීමට ඔබට ශක්තිය සහ විශ්වාසය ලබා දෙයි.';
+
+  @override
+  String get support_protect_help =>
+      'ඔවුන් සිටින්නේ ඔබට සහය වීමට, ඔබව ආරක්ෂා කිරීමට සහ ඔබට ඔබගේ හොඳම අනුවාදය වීමට උපකාර කිරීමටය. ඒ නිසා මතක තබා ගන්න, ඔබට අයිතිවාසිකම් ඇති අතර, ඔබ සිටින තාරකාව මෙන් දීප්තිමත් වීමට ඔබට උපකාර කිරීමට ඔවුන් සිටී!';
+
+  @override
+  String get title_rights_of_child => 'දරුවාගේ අයිතිවාසිකම්';
+
+  @override
+  String get title_education_for_all => 'සැමටම අධ්‍යාපනය';
+
+  @override
+  String get title_promote_rights_wellbeing =>
+      'අයිතිය සහ යහපැවැත්ම ප්‍රවර්ධනය කිරීම';
 }

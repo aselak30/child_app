@@ -286,4 +286,59 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get faq_different_rights_a =>
       'No matter where you live or what you look like, all children have the same basic rights.';
+
+  @override
+  String get learn_your_rights => 'Learn Your Rights.';
+
+  @override
+  String get what_are_child_rights => 'What are Child Rights?';
+
+  @override
+  String get uncrc_child_rights_definition =>
+      'According to the UNCRC Child Rights are minimum entitlements and freedoms that should be afforded to all persons below the age of 18 regardless of race, colour, gender, language, religion, opinions, origins, wealth, birth status or ability and therefore apply to all people everywhere.';
+
+  @override
+  String get how_do_child_rights_help => 'How do child rights help you?';
+
+  @override
+  String get child_rights_description =>
+      'Child rights are like a shield that protects you and helps you live a happy and fulfilling life. Imagine a big umbrella on a rainy day – child rights are like that umbrella, keeping you safe and dry. Here’s how child rights help you:';
+
+  @override
+  String get protect_from_harm =>
+      'Protect you from harm and ensure you have a safe and loving home.';
+
+  @override
+  String get guarantee_education =>
+      'Guarantee your right to education, empowering you to pursue your dreams.';
+
+  @override
+  String get access_healthcare =>
+      'Provide access to healthcare and nutritious food, promoting your overall well-being.';
+
+  @override
+  String get give_a_voice =>
+      'Give you a voice, ensuring your opinions are heard and respected.';
+
+  @override
+  String get fight_discrimination =>
+      'Fight against discrimination, ensuring that every child is treated fairly and equally.';
+
+  @override
+  String get summary_superpower =>
+      'In summary, child rights are like your superpower cape, giving you the strength and confidence to overcome any challenge that comes your way.';
+
+  @override
+  String get support_protect_help =>
+      'They’re there to support you, protect you, and help you become the best version of yourself. So remember, you have rights, and they’re there to help you shine bright like the star you are!';
+
+  @override
+  String get title_rights_of_child => 'The Rights of the Child';
+
+  @override
+  String get title_education_for_all => 'Education for Everyone';
+
+  @override
+  String get title_promote_rights_wellbeing =>
+      'Promoting the right and well being';
 }

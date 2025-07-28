@@ -603,6 +603,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No matter where you live or what you look like, all children have the same basic rights.'**
   String get faq_different_rights_a;
+
+  /// No description provided for @learn_your_rights.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn Your Rights.'**
+  String get learn_your_rights;
+
+  /// No description provided for @what_are_child_rights.
+  ///
+  /// In en, this message translates to:
+  /// **'What are Child Rights?'**
+  String get what_are_child_rights;
+
+  /// No description provided for @uncrc_child_rights_definition.
+  ///
+  /// In en, this message translates to:
+  /// **'According to the UNCRC Child Rights are minimum entitlements and freedoms that should be afforded to all persons below the age of 18 regardless of race, colour, gender, language, religion, opinions, origins, wealth, birth status or ability and therefore apply to all people everywhere.'**
+  String get uncrc_child_rights_definition;
+
+  /// No description provided for @how_do_child_rights_help.
+  ///
+  /// In en, this message translates to:
+  /// **'How do child rights help you?'**
+  String get how_do_child_rights_help;
+
+  /// No description provided for @child_rights_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Child rights are like a shield that protects you and helps you live a happy and fulfilling life. Imagine a big umbrella on a rainy day – child rights are like that umbrella, keeping you safe and dry. Here’s how child rights help you:'**
+  String get child_rights_description;
+
+  /// No description provided for @protect_from_harm.
+  ///
+  /// In en, this message translates to:
+  /// **'Protect you from harm and ensure you have a safe and loving home.'**
+  String get protect_from_harm;
+
+  /// No description provided for @guarantee_education.
+  ///
+  /// In en, this message translates to:
+  /// **'Guarantee your right to education, empowering you to pursue your dreams.'**
+  String get guarantee_education;
+
+  /// No description provided for @access_healthcare.
+  ///
+  /// In en, this message translates to:
+  /// **'Provide access to healthcare and nutritious food, promoting your overall well-being.'**
+  String get access_healthcare;
+
+  /// No description provided for @give_a_voice.
+  ///
+  /// In en, this message translates to:
+  /// **'Give you a voice, ensuring your opinions are heard and respected.'**
+  String get give_a_voice;
+
+  /// No description provided for @fight_discrimination.
+  ///
+  /// In en, this message translates to:
+  /// **'Fight against discrimination, ensuring that every child is treated fairly and equally.'**
+  String get fight_discrimination;
+
+  /// No description provided for @summary_superpower.
+  ///
+  /// In en, this message translates to:
+  /// **'In summary, child rights are like your superpower cape, giving you the strength and confidence to overcome any challenge that comes your way.'**
+  String get summary_superpower;
+
+  /// No description provided for @support_protect_help.
+  ///
+  /// In en, this message translates to:
+  /// **'They’re there to support you, protect you, and help you become the best version of yourself. So remember, you have rights, and they’re there to help you shine bright like the star you are!'**
+  String get support_protect_help;
+
+  /// No description provided for @title_rights_of_child.
+  ///
+  /// In en, this message translates to:
+  /// **'The Rights of the Child'**
+  String get title_rights_of_child;
+
+  /// No description provided for @title_education_for_all.
+  ///
+  /// In en, this message translates to:
+  /// **'Education for Everyone'**
+  String get title_education_for_all;
+
+  /// No description provided for @title_promote_rights_wellbeing.
+  ///
+  /// In en, this message translates to:
+  /// **'Promoting the right and well being'**
+  String get title_promote_rights_wellbeing;
 }
 
 class _AppLocalizationsDelegate

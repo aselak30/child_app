@@ -22,6 +22,7 @@ var kSplashImage = 'assets/splash_image.png';
 var kPlaceHolderImage = 'assets/profile.png';
 // var kPlaceHolderImage = 'assets/place_holder.png';
 var kPostImage = 'assets/post_image_holder.png';
+var kRights = 'assets/rights.png';
 var noData = 'assets/noData.gif';
 
 var kHomeIcon = 'assets/home_icon.png';
