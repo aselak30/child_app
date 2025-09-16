@@ -1,5 +1,6 @@
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/ui/mp/chat_screen/chat_screen.dart';
+import 'package:chilld_app/ui/mp/contacts/contacts_screen.dart';
 import 'package:chilld_app/ui/mp/home_page/home_screen.dart';
 import 'package:chilld_app/ui/mp/profile_screen/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     const HomeScreen(),
     const ChatScreen(),
     const ProfileScreen(),
+    const ContactsScreen(),
   ];
 
   @override
@@ -116,6 +118,35 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       'Profile',
                       style: GoogleFonts.poppins(
                         color: _currentIndex == 2
+                            ? kBlackColor
+                            : kGrayColor.withOpacity(0.5),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _currentIndex = 3;
+                  });
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset(
+                      kPhoneIcon,
+                      width: 20,
+                      color: _currentIndex == 3
+                          ? kPrimaryBlueColor
+                          : kPrimaryBlueColor.withOpacity(0.5),
+                    ),
+                    Text(
+                      'Contacts',
+                      style: GoogleFonts.poppins(
+                        color: _currentIndex == 3
                             ? kBlackColor
                             : kGrayColor.withOpacity(0.5),
                         fontSize: 15,

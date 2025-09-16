@@ -28,6 +28,7 @@ var noData = 'assets/noData.gif';
 var kHomeIcon = 'assets/home_icon.png';
 var kChatIcon = 'assets/chat_icon.png';
 var kProfileIcon = 'assets/profile_icon.png';
+var kPhoneIcon = 'assets/phone.png';
 var kUserIcon = 'assets/user_icon.png';
 var kChatIcon1 = 'assets/chat_icon_1.png';
 var kLanguageIcon = 'assets/language_icon.png';
