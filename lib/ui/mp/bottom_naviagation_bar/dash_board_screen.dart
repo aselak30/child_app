@@ -101,35 +101,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    _currentIndex = 2;
-                  });
-                },
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Image.asset(
-                      kProfileIcon,
-                      width: 20,
-                      color: _currentIndex == 2
-                          ? kPrimaryBlueColor
-                          : kPrimaryBlueColor.withOpacity(0.5),
-                    ),
-                    Text(
-                      'Profile',
-                      style: GoogleFonts.poppins(
-                        color: _currentIndex == 2
-                            ? kBlackColor
-                            : kGrayColor.withOpacity(0.5),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
                     _currentIndex = 3;
                   });
                 },
@@ -147,6 +118,35 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       'Contacts',
                       style: GoogleFonts.poppins(
                         color: _currentIndex == 3
+                            ? kBlackColor
+                            : kGrayColor.withOpacity(0.5),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _currentIndex = 2;
+                  });
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset(
+                      kProfileIcon,
+                      width: 20,
+                      color: _currentIndex == 2
+                          ? kPrimaryBlueColor
+                          : kPrimaryBlueColor.withOpacity(0.5),
+                    ),
+                    Text(
+                      'Profile',
+                      style: GoogleFonts.poppins(
+                        color: _currentIndex == 2
                             ? kBlackColor
                             : kGrayColor.withOpacity(0.5),
                         fontSize: 15,

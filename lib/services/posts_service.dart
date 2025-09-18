@@ -13,7 +13,7 @@ class PostsService {
   ) async {
     try {
       final response = await http.get(
-        Uri.parse('${baseUrl}custom-api/v1/posts/english'),
+        Uri.parse('${baseUrl}custom-api/v1/posts/$language'),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',

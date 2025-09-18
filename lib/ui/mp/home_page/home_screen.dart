@@ -32,16 +32,47 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _isFabVisible = true;
   final bool _isFabExpanded = false;
 
+  String selectedLanguage = "english"; // default
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    fetch();
+    // fetch();
     // listController.addListener(() {
     //   if (listController.position.maxScrollExtent == listController.offset) {
     //     fetch();
     //   }
     // });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final appLanguage = translation(context).localeName;
+
+    String newLanguage;
+    if (appLanguage == "en") {
+      newLanguage = "english";
+    } else if (appLanguage == "si") {
+      newLanguage = "sinhala";
+    } else if (appLanguage == "ta") {
+      newLanguage = "tamil";
+    } else {
+      newLanguage = "english"; // fallback
+    }
+
+    // Only reload when language really changes
+    if (newLanguage != selectedLanguage || items.isEmpty) {
+      setState(() {
+        selectedLanguage = newLanguage;
+        items.clear();
+        page = 1;
+        hasMore = true;
+      });
+      fetch();
+    }
   }
 
   Future fetch() async {
@@ -56,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // if (response.statusCode == 200) {
     // final List newItems = json.decode(response.body);
 
-    final newItems = await PostsService.getPosts(context, "english");
+    final newItems = await PostsService.getPosts(context, selectedLanguage);
 
     setState(() {
       page++;
@@ -79,11 +110,21 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       isLoading = false;
       hasMore = true;
-      page = 0;
+      page = 1; // ✅ start from first page
       items.clear();
     });
     fetch();
   }
+
+  // Future refresh() async {
+  //   setState(() {
+  //     isLoading = false;
+  //     hasMore = true;
+  //     page = 0;
+  //     items.clear();
+  //   });
+  //   fetch();
+  // }
 
   @override
   Widget build(BuildContext context) {

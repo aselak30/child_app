@@ -1,3 +1,4 @@
+import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/models/post_details_model.dart';
 import 'package:chilld_app/services/posts_service.dart';
@@ -16,13 +17,36 @@ class FullPostScreen extends StatefulWidget {
 class _FullPostScreenState extends State<FullPostScreen> {
   late Future<PostDetailsModel> postDetailsFuture;
   String? selectedLanguage = "english";
-
+  // String? appLanguage = '';
   List<String> items = ['english', 'sinhala', "tamil"];
 
   @override
   void initState() {
     super.initState();
     postDetailsFuture = getPostDetails(widget.postId, selectedLanguage!);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // get app language safely here
+    String appLanguage = translation(context).localeName;
+
+    setState(() {
+      if (appLanguage == "en") {
+        selectedLanguage = "english";
+      } else if (appLanguage == "si") {
+        selectedLanguage = "sinhala";
+      } else if (appLanguage == "ta") {
+        selectedLanguage = "tamil";
+      } else {
+        selectedLanguage = "english";
+      }
+
+      // now load post details with correct language
+      postDetailsFuture = getPostDetails(widget.postId, selectedLanguage!);
+    });
   }
 
   Future<PostDetailsModel> getPostDetails(
