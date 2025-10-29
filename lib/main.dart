@@ -1,15 +1,28 @@
 import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/services/auth_service.dart';
 import 'package:chilld_app/ui/mp/loading_screen/splash_screen.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'l10n/app_localizations.dart';
 
 void main() {
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (_) => AuthenticationService()),
-  ], child: const MyApp()));
+  runApp(DevicePreview(
+    enabled: false,
+    builder: (context) {
+      return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => AuthenticationService()),
+        ],
+        child: const MyApp(),
+      );
+    },
+  )
+      //   MultiProvider(providers: [
+      //   ChangeNotifierProvider(create: (_) => AuthenticationService()),
+      // ], child: const MyApp())
+      );
 }
 
 class MyApp extends StatefulWidget {

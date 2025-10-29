@@ -28,17 +28,17 @@ class AuthenticationService extends ChangeNotifier {
       const Duration(seconds: 3),
       () async {
         String? token = await SecureStorageManager().getToken();
-        if (token != null) {
-          applicationInit(context);
-        } else {
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const LandingScreen(),
-            ),
-            (route) => false,
-          );
-        }
+        // if (token != null) {
+        applicationInit(context);
+        // } else {
+        //   Navigator.pushAndRemoveUntil(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) => const LandingScreen(),
+        //     ),
+        //     (route) => false,
+        //   );
+        // }
       },
     );
   }

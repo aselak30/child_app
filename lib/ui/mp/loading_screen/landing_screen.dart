@@ -56,8 +56,8 @@ class _LandingScreenState extends State<LandingScreen> {
               left: 0,
               right: 0,
               child: Column(
-                //crossAxisAlignment: CrossAxisAlignment.center,
-                //mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     translation(context).splash_one,
@@ -103,7 +103,7 @@ class _LandingScreenState extends State<LandingScreen> {
               bottom: 2,
               left: 0,
               right: 0,
-              child:    TextButton(
+              child: TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,

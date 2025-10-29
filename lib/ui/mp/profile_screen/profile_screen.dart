@@ -38,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       userName = user?.username ?? '';
       email = user?.email ?? '';
-      name = '${user!.firstName} ${user?.lastName ?? ''}';
+      name = '${user != null ? user!.firstName : ''} ${user?.lastName ?? ''}';
     });
 
     // setState(() {
@@ -63,72 +63,72 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             child: Column(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.asset(
-                    kPlaceHolderImage,
-                    height: 120,
-                    width: 120,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  userName.isNotEmpty ? userName : 'User Name',
-                  // 'Alexander Flinch',
-                  style: GoogleFonts.poppins(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    //Name
-                    const Icon(
-                      Icons.person,
-                      size: 16,
-                      color: Colors.grey,
-                    ),
-                    const SizedBox(width: 5),
-                    Text(
-                      name.isNotEmpty ? name : 'Name',
-                      style: GoogleFonts.poppins(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    const SizedBox(width: 20),
+                // ClipRRect(
+                //   borderRadius: BorderRadius.circular(20),
+                //   child: Image.asset(
+                //     kPlaceHolderImage,
+                //     height: 120,
+                //     width: 120,
+                //     fit: BoxFit.cover,
+                //   ),
+                // ),
+                // const SizedBox(height: 10),
+                // Text(
+                //   userName.isNotEmpty ? userName : 'User Name',
+                //   // 'Alexander Flinch',
+                //   style: GoogleFonts.poppins(
+                //     fontSize: 20,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                // const SizedBox(height: 10),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     //Name
+                //     const Icon(
+                //       Icons.person,
+                //       size: 16,
+                //       color: Colors.grey,
+                //     ),
+                //     const SizedBox(width: 5),
+                //     Text(
+                //       name.isNotEmpty ? name : 'Name',
+                //       style: GoogleFonts.poppins(
+                //         fontSize: 12,
+                //         fontWeight: FontWeight.w400,
+                //       ),
+                //     ),
+                //     const SizedBox(width: 20),
 
-                    // Email
-                    const Icon(Icons.email, size: 16, color: Colors.grey),
-                    const SizedBox(width: 5),
-                    Text(
-                      email.isNotEmpty ? email : 'Email',
-                      style: GoogleFonts.poppins(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                ),
+                //     // Email
+                //     const Icon(Icons.email, size: 16, color: Colors.grey),
+                //     const SizedBox(width: 5),
+                //     Text(
+                //       email.isNotEmpty ? email : 'Email',
+                //       style: GoogleFonts.poppins(
+                //         fontSize: 12,
+                //         fontWeight: FontWeight.w400,
+                //       ),
+                //     ),
+                //   ],
+                // ),
 
-                const SizedBox(height: 25),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const EditProfileScreen(),
-                      ),
-                    );
-                  },
-                  child: ProfileMenuItem(
-                    iconPath: kUserIcon,
-                    menuTitle: translation(context).edit_profile,
-                  ),
-                ),
+                // const SizedBox(height: 25),
+                // GestureDetector(
+                //   onTap: () {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => const EditProfileScreen(),
+                //       ),
+                //     );
+                //   },
+                //   child: ProfileMenuItem(
+                //     iconPath: kUserIcon,
+                //     menuTitle: translation(context).edit_profile,
+                //   ),
+                // ),
                 // const SizedBox(height: 20),
                 // GestureDetector(
                 //   onTap: () {
@@ -142,6 +142,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 //   child: ProfileMenuItem(
                 //     iconPath: kChatIcon1,
                 //     menuTitle: translation(context).chat_now,
+                //   ),
+                // ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Image.asset(
+                    "assets/profile1.gif",
+                    // height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                // ClipRRect(
+                //   borderRadius: BorderRadius.circular(16),
+                //   child: Image.network(
+                //     "https://miro.medium.com/v2/resize:fit:640/format:webp/1*Av6VqXQaiKBbphO08EYrLw.gif",
+                //     // height: 200,
+                //     width: double.infinity,
+                //     fit: BoxFit.cover,
                 //   ),
                 // ),
                 const SizedBox(height: 20),
@@ -258,18 +276,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) => const ConfirmLogoutDialog(),
-                    );
-                  },
-                  child: ProfileMenuItem(
-                    iconPath: kLogOutIcon,
-                    menuTitle: translation(context).log_out,
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () {
+                //     showDialog(
+                //       context: context,
+                //       builder: (context) => const ConfirmLogoutDialog(),
+                //     );
+                //   },
+                //   child: ProfileMenuItem(
+                //     iconPath: kLogOutIcon,
+                //     menuTitle: translation(context).log_out,
+                //   ),
+                // ),
               ],
             ),
           ),

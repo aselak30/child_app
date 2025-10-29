@@ -137,14 +137,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Image.asset(
-                      kProfileIcon,
+                      kSettingIcon,
                       width: 20,
                       color: _currentIndex == 2
                           ? kPrimaryBlueColor
                           : kPrimaryBlueColor.withOpacity(0.5),
                     ),
                     Text(
-                      'Profile',
+                      'Settings',
                       style: GoogleFonts.poppins(
                         color: _currentIndex == 2
                             ? kBlackColor
