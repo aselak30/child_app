@@ -46,6 +46,7 @@ class AuthenticationService extends ChangeNotifier {
   Future<void> applicationInit(BuildContext context) async {
     try {
       authToken = await SecureStorageManager().getToken() ?? '';
+
       // role = await SecureStorageManager().getRole() ?? '';
       // print(role);
       Navigator.pushAndRemoveUntil(

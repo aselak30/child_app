@@ -2,9 +2,11 @@ import 'package:chilld_app/classes/language_constants.dart';
 import 'package:chilld_app/constants.dart';
 import 'package:chilld_app/models/post_details_model.dart';
 import 'package:chilld_app/services/posts_service.dart';
+import 'package:chilld_app/ui/mp/full_screen_vedio_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class FullPostScreen extends StatefulWidget {
   final String postId;
@@ -17,8 +19,9 @@ class FullPostScreen extends StatefulWidget {
 class _FullPostScreenState extends State<FullPostScreen> {
   late Future<PostDetailsModel> postDetailsFuture;
   String? selectedLanguage = "english";
-  // String? appLanguage = '';
   List<String> items = ['english', 'sinhala', "tamil"];
+  YoutubePlayerController? _youtubeController;
+  String? _currentVideoId;
 
   @override
   void initState() {
@@ -30,7 +33,6 @@ class _FullPostScreenState extends State<FullPostScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    // get app language safely here
     String appLanguage = translation(context).localeName;
 
     setState(() {
@@ -44,7 +46,6 @@ class _FullPostScreenState extends State<FullPostScreen> {
         selectedLanguage = "english";
       }
 
-      // now load post details with correct language
       postDetailsFuture = getPostDetails(widget.postId, selectedLanguage!);
     });
   }
@@ -53,7 +54,83 @@ class _FullPostScreenState extends State<FullPostScreen> {
       String postId, String language) async {
     final postDetails =
         await PostsService.getPostDetails(context, language, postId);
+
+    if (postDetails.type == "video" && postDetails.video != null) {
+      _initializeYoutubePlayer(postDetails.video!);
+    }
+
     return postDetails;
+  }
+
+  void _initializeYoutubePlayer(String videoUrl) {
+    String? videoId = YoutubePlayer.convertUrlToId(videoUrl);
+
+    if (videoId == null) return;
+
+    // Only recreate if video ID changed
+    if (_currentVideoId != videoId) {
+      _youtubeController?.dispose();
+      _currentVideoId = videoId;
+
+      _youtubeController = YoutubePlayerController(
+        initialVideoId: videoId,
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          mute: false,
+          enableCaption: true,
+          controlsVisibleAtStart: true,
+          hideControls: false,
+        ),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _youtubeController?.dispose();
+    super.dispose();
+  }
+
+  // ✅ Open fullscreen with video ID only
+  void _openFullscreen() {
+    if (_currentVideoId == null) return;
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => FullScreenVideoPage(
+          videoId: _currentVideoId!, // ✅ Pass only video ID
+        ),
+      ),
+    );
+  }
+
+  Widget buildYoutubePlayer() {
+    if (_youtubeController == null) return const SizedBox.shrink();
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: YoutubePlayer(
+        controller: _youtubeController!,
+        showVideoProgressIndicator: true,
+        progressIndicatorColor: Colors.red,
+        progressColors: const ProgressBarColors(
+          playedColor: Colors.red,
+          handleColor: Colors.redAccent,
+        ),
+        bottomActions: [
+          const CurrentPosition(),
+          const ProgressBar(isExpanded: true),
+          const RemainingDuration(),
+          IconButton(
+            icon: const Icon(
+              Icons.fullscreen,
+              color: Colors.white,
+            ),
+            onPressed: _openFullscreen,
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -79,7 +156,7 @@ class _FullPostScreenState extends State<FullPostScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: DropdownButton<String>(
-              value: selectedLanguage, // Default value set to 'English'
+              value: selectedLanguage,
               icon: Icon(
                 Icons.arrow_drop_down_rounded,
                 color: kBlackColor,
@@ -91,20 +168,11 @@ class _FullPostScreenState extends State<FullPostScreen> {
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),
-              // TextStyle(
-              //     color: Colors.black,
-              //     fontSize: 18),
-              // underline: Container(
-              //   height: 2,
-              //   color: Colors.deepPurpleAccent,
-              // ),
               onChanged: (String? newValue) {
                 setState(() {
                   selectedLanguage = newValue!;
                   postDetailsFuture =
                       getPostDetails(widget.postId, selectedLanguage!);
-
-                  // getPostDetails(widget.postId, selectedLanguage!);
                 });
               },
               items: items.map<DropdownMenuItem<String>>((String value) {
@@ -132,11 +200,11 @@ class _FullPostScreenState extends State<FullPostScreen> {
                 child: Image.asset(
               noData,
               height: 150,
-              // width: double.infinity,
               fit: BoxFit.cover,
             ));
           } else if (snapshot.hasData) {
             final postDetails = snapshot.data!;
+
             return Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: kHorizontalPadding,
@@ -146,41 +214,20 @@ class _FullPostScreenState extends State<FullPostScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Text(
-                    //   postDetails.translatedTitle,
-                    //   style: GoogleFonts.poppins(
-                    //     fontSize: 24,
-                    //     fontWeight: FontWeight.w600,
-                    //     color: kBlackColor,
-                    //   ),
-                    // ),
-                    // const SizedBox(height: 20),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child:
-                          // postDetails.featuredImage == false
-                          //     ? Image.asset(
-                          //         kPostImage,
-                          //         height: 150,
-                          //         width: double.infinity,
-                          //         fit: BoxFit.cover,
-                          //       )
-                          //     :
-                          //     Image.network(
-                          //   postDetails.featuredImage,
-                          //   height: 150,
-                          //   width: double.infinity,
-                          //   fit: BoxFit.cover,
-                          // ),
-                          postDetails.featuredImage == true
-                              ? Image.network(
-                                  postDetails.featuredImage,
-                                  height: 150,
-                                  width: double.infinity,
-                                  fit: BoxFit.cover,
-                                )
-                              : const SizedBox.shrink(),
-                    ),
+                    if (postDetails.type == "video" &&
+                        postDetails.video != null &&
+                        _youtubeController != null)
+                      buildYoutubePlayer()
+                    else if (postDetails.featuredImage == true)
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Image.network(
+                          postDetails.featuredImage,
+                          height: 150,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     const SizedBox(height: 20),
                     Text(
                       postDetails.translatedTitle,
@@ -204,7 +251,6 @@ class _FullPostScreenState extends State<FullPostScreen> {
                 child: Image.asset(
               noData,
               height: 150,
-              // width: double.infinity,
               fit: BoxFit.cover,
             ));
           }
