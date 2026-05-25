@@ -1,4 +1,4 @@
-package com.example.chilld_app
+package com.ak.chilld_app
 
 import io.flutter.embedding.android.FlutterActivity
 
